@@ -6,11 +6,11 @@
     "keywords"              : ["theme", "Ceres", "template", "Kraz8"],
     "type"                  :"theme",
     "require"               : [],
-    "serviceProvider"       :"k8theme\\Providers\\k8themeServiceProvider",
+    "serviceProvider"       :"k8theme\\Providers\\ThemeServiceProvider",
     "dataProviders"         :
     [
         {
-            "key"           :"k8theme\\Containers\\k8themeContainer",
+            "key"           :"k8theme\\Containers\\ThemeContainer",
             "name"          :"Augenkrebs",
             "description"   :"Change the design of the Ceres template"
         }
