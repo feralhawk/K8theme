@@ -4,7 +4,7 @@ namespace k8theme\Providers;
 
 use Plenty\Plugin\ServiceProvider;
 
-class k8themeServiceProvider extends ServiceProvider
+class ThemeServiceProvider extends ServiceProvider
 {
 
 	/**

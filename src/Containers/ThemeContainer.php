@@ -4,7 +4,7 @@ namespace k8theme\Containers;
 
 use Plenty\Plugin\Templates\Twig;
 
-class k8themeContainer
+class ThemeContainer
 {
     public function call(Twig $twig):string
     {
