@@ -3,6 +3,7 @@
     "description"           :"Basic theme plugin",
     "namespace"             :"k8theme",
     "author"                :"Falk Wegner",
+    "license"               :"AGPL-3.0",
     "keywords"              : ["theme", "Ceres", "template", "Kraz8"],
     "type"                  :"theme",
     "require"               : [],
