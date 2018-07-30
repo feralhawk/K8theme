@@ -2,10 +2,7 @@
 
 namespace k8theme\Providers;
 
-use IO\Extensions\Functions\Partial;
-use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\ServiceProvider;
-use Plenty\Plugin\Templates\Twig;
 
 class ThemeServiceProvider extends ServiceProvider
 {
@@ -20,9 +17,9 @@ class ThemeServiceProvider extends ServiceProvider
 
 	public function boot(Twig $twig, Dispatcher $eventDispatcher)
 	    {
-	        $eventDispatcher->listen('IO.init.templates', function(Partial $partial)
+	        $eventDispatcher->listen('IO.tpl.my-account', function(TemplateContainer $container, $templateData)
 	        {
-	           $partial->set('page-design', 'k8theme::MyAccount.k8themeMyAccount');
+	          $container->setTemplate('k8theme::MyAccount.k8themeMyAccount'); 
 	        }, 0);
 	        return false;
 	    }
