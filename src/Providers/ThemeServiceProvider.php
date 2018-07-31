@@ -12,17 +12,7 @@ class ThemeServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-
+			$this->getApplication()->register(k8themeRouteServiceProvider::class);
 	}
-
-	public function boot(Twig $twig, Dispatcher $eventDispatcher)
-	    {
-	        $eventDispatcher->listen('IO.tpl.my-account', function(TemplateContainer $container, $templateData)
-	        {
-	          $container->setTemplate('k8theme::MyAccount.k8themeMyAccount');
-						return false;
-	        }, 0);
-
-	    }
 
 }
