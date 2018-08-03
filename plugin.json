@@ -4,10 +4,10 @@
     "namespace"             :"k8theme",
     "author"                :"Falk Wegner",
     "license"               :"AGPL-3.0",
-    "keywords"              : ["theme", "Ceres", "template", "Kraz8"],
+    "keywords"              : ["theme", "Ceres", "template", "Krazy8"],
     "type"                  :"theme",
     "require"               : [],
-    "serviceProvider"       :"k8theme\\Providers\\ThemeServiceProvider",
+    "serviceProvider"       :"k8theme\\Providers\\k8themeServiceProvider",
     "dataProviders"         :
     [
         {
