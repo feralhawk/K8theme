@@ -12,7 +12,8 @@ class ThemeServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-			$this->getApplication()->register(k8themeRouteServiceProvider::class);
+			$this->getApplication()->register(k8themeRouteServiceProvider::class); 
+
 	}
 
 }
