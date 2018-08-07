@@ -1,9 +1,9 @@
 {
-    "name"                  :"k8theme",
+    "name"                  :"K8theme",
     "description"           :"Basic theme plugin",
-    "namespace"             :"k8theme",
+    "namespace"             :"K8theme",
     "author"                :"Falk Wegner",
     "license"               :"AGPL-3.0",
     "type"                  :"template",
-    "serviceProvider"       :"k8theme\\Providers\\k8themeServiceProvider"
+    "serviceProvider"       :"K8theme\\Providers\\K8themeServiceProvider"
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace k8theme\Providers;
+namespace K8theme\Providers;
 
 use Plenty\Plugin\ServiceProvider;
 
@@ -12,7 +12,7 @@ class ThemeServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-			$this->getApplication()->register(k8themeRouteServiceProvider::class); 
+			$this->getApplication()->register(K8themeRouteServiceProvider::class);
 
 	}
 

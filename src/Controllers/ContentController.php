@@ -1,6 +1,6 @@
 <?php
 
-namespace k8theme\Controllers;
+namespace K8theme\Controllers;
 
 
 use Plenty\Plugin\Controller;
@@ -10,6 +10,6 @@ class ContentController extends Controller
 {
     public function sayHello(Twig $twig):string
     {
-        return $twig->render('k8theme::content.hello');
+        return $twig->render('K8theme::content.hello');
     }
 }
