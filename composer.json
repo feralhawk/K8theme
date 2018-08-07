@@ -1,0 +1,19 @@
+{
+    "name": "feralhawk/k8theme",
+    "type": "project",
+    "description": "Creates an empty frontend plugin for plentymarkets plugin development",
+    "license": "AGPL-3.0",
+    "authors":
+    [
+        {
+            "name": "Falk Wegner",
+            "email": "webmaster@dark-ages.de",
+            "homepage": "https://www.krazy8.de",
+            "role": "Developer"
+        }
+    ],
+    "require":
+    {
+        "php": "^5.5 || ^7.0"
+    }
+}

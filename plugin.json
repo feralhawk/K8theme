@@ -4,16 +4,6 @@
     "namespace"             :"k8theme",
     "author"                :"Falk Wegner",
     "license"               :"AGPL-3.0",
-    "keywords"              : ["theme", "Ceres", "template", "Krazy8"],
-    "type"                  :"theme",
-    "require"               : [],
-    "serviceProvider"       :"k8theme\\Providers\\k8themeServiceProvider",
-    "dataProviders"         :
-    [
-        {
-            "key"           :"k8theme\\Containers\\ThemeContainer",
-            "name"          :"Augenkrebs",
-            "description"   :"Change the design of the Ceres template"
-        }
-    ]
+    "type"                  :"template",
+    "serviceProvider"       :"k8theme\\Providers\\k8themeServiceProvider"
 }
