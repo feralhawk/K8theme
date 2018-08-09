@@ -12,4 +12,9 @@ class ContentController extends Controller
     {
         return $twig->render('K8theme::content.hello');
     }
+
+    public function showMyAccount(Twig $twig):string
+    {
+        return $twig->render('K8theme::MyAccount.MyAccount')
+    }
 }
