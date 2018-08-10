@@ -11,7 +11,6 @@ class K8themeRouteServiceProvider extends RouteServiceProvider
     public function map(Router $router)
     {
         $router->get('hello','K8theme\Controllers\ContentController@sayHello');
-        $router->get('my-account','K8theme\Controllers\ContentController@showMyAccount')
     }
 
 }

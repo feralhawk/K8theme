@@ -1,9 +1,37 @@
 {
+    "version"               :"0.0.1",
     "name"                  :"K8theme",
-    "description"           :"Basic theme plugin",
+    "description"           :"Basic theme plugin for Ceres",
+    "shortDescription"      :{ "de": "Basic Theme Plugin für Ceres.", "en": "Basic theme plugin for Ceres." },
     "namespace"             :"K8theme",
     "author"                :"Falk Wegner",
+    "email"                 :"webmaster@dark-ages.de",
+    "phone"                 :"+49 201 559 718 6",
     "license"               :"AGPL-3.0",
-    "type"                  :"template",
-    "serviceProvider"       :"K8theme\\Providers\\K8themeServiceProvider"
+    "type"                  :"theme",
+    "require"               :["Ceres"],
+    "serviceProvider"       :"K8theme\\Providers\\K8themeServiceProvider",
+    "dataProviders"     :
+    [
+        {
+            "key"           :"K8theme\\Containers\\K8themeContainer",
+            "name"          :"Stylesheet",
+            "description"   :"Add changes to the CSS file"
+        },
+        {
+            "key"           :"K8theme\\Containers\\K8themeItemListContainer1",
+            "name"          :"First item list",
+            "description"   :"Display a configurable list of items in your online store"
+        },
+        {
+            "key"           :"K8theme\\Containers\\K8themeItemListContainer2",
+            "name"          :"Second item list",
+            "description"   :"Display a configurable list of items in your online store"
+        },
+        {
+            "key"           :"K8theme\\Containers\\K8themeItemListContainer3",
+            "name"          :"Third item list",
+            "description"   :"Display a configurable list of items in your online store"
+        }
+    ]
 }
