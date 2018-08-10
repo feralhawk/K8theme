@@ -1,6 +1,8 @@
 <?php
 namespace K8theme\Providers;
 
+use Ceres\Caching\NavigationCacheSettings;
+use Ceres\Caching\SideNavigationCacheSettings;
 use IO\Services\ContentCaching\Services\Container;
 use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
@@ -19,9 +21,8 @@ class K8themeServiceProvider extends ServiceProvider
 
     public function register()
     {
-
+      $this->getApplication()->register(K8themeRouteServiceProvider::class);
     }
-
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
 
