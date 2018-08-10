@@ -8,7 +8,7 @@
     "email"                 :"webmaster@dark-ages.de",
     "phone"                 :"+49 201 559 718 6",
     "license"               :"AGPL-3.0",
-    "type"                  :"template",
+    "type"                  :"theme",
     "require"               :["Ceres"],
     "serviceProvider"       :"K8theme\\Providers\\K8themeServiceProvider",
     "dataProviders"     :
