@@ -11,10 +11,6 @@ use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
 use Plenty\Plugin\ConfigRepository;
 
-/**
- * Class HelloWorldServiceProvider
- * @package HelloWorld\Providers
- */
 class K8themeServiceProvider extends ServiceProvider
 {
     const PRIORITY = 0;
