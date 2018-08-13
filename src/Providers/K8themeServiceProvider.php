@@ -183,6 +183,15 @@ class K8themeServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
+
+
+        $eventDispatcher->listen('IO.tpl.my-account', function(TemplateContainer $container, $templateData)
+        {
+            $container->setTemplate('K8theme::MyAccount.MyAccount');
+            return false;
+        }, 0);
+
+
         // Override cancellation rights
         if (in_array("cancellation_rights", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
