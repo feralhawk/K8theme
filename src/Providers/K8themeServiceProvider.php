@@ -183,6 +183,7 @@ class K8themeServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
+
         // Override cancellation rights
         if (in_array("cancellation_rights", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
