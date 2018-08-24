@@ -13759,7 +13759,7 @@ body.menu-is-visible {
 }
 
 .static-link-list {
-  margin-bottom: -15px;
+  margin-bottom: 15px;
 }
 
 .static-link-list a {
