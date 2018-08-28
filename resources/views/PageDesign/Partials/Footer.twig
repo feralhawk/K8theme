@@ -78,13 +78,11 @@
                                         <a href="{{ services.category.getURL( cat ) }}">
                                             {{ cat.details.first.name }}</a>
                                     </li>
+                                {% else %}
+                                  <li>Pansensupper</li>
+                                  <li>Saures Lungerl</li>
                                 {% endif %}
-
                             {% endfor %}
-                            {% if i == 3 %}
-                              <li>Pansensupper</li>
-                              <li>Saures Lungerl</li>
-                            {% endif %}
                         </ul>
                     </nav>
                 </div>
