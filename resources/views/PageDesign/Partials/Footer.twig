@@ -78,11 +78,9 @@
                                         <a href="{{ services.category.getURL( cat ) }}">
                                             {{ cat.details.first.name }}</a>
                                     </li>
-                                {% else %}
-                                  <li><a href="{{ return redirect()->away('https://www.facebook.com/darkages.de'); }}" id="socialfb" target="_blank">Facebook</a></li>
-                                  <li><a href="{{ return redirect()->away('https://www.instagram.com/krazy8.headshop'); }}" id="socialig" target="_blank">Instagram</a></li>
-                                {% endif %}
                             {% endfor %}
+                            <li><a href="https://www.facebook.com/darkages.de" id="socialfb" target="_blank">Facebook</a></li>
+                            <li><a href="https://www.instagram.com/krazy8.headshop" id="socialig" target="_blank">Instagram</a></li>
                         </ul>
                     </nav>
                 </div>
