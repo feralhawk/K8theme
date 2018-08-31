@@ -13668,7 +13668,35 @@ body.menu-is-visible {
 }
 
 .footer a {
-  color: #4D4F4D;
+  color: #909090;
+}
+
+.footer a:hover {
+  color: #61fe01;
+}
+
+#socialig, #socialfb {
+  background-repeat:no-repeat;
+  display: block;
+  padding-left: 40px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+#socialig {
+  background-image: url('https://cdn02.plentymarkets.com/qc8qz643lcav/frontend/layout/bilder/wartung/icon_ig.png');background-position: 0 0;
+ }
+
+#socialfb {
+  background-image: url('https://cdn02.plentymarkets.com/qc8qz643lcav/frontend/layout/bilder/wartung/icon_fb.png');background-position: 0 0;
+ }
+
+#socialig:hover {
+  background-position: 0 100%;
+ }
+
+#socialfb:hover {
+  background-position: 0 100%;
 }
 
 .footer .svg.plenty-brand {
