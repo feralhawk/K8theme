@@ -79,12 +79,11 @@
                                             {{ cat.details.first.name }}</a>
                                     </li>
                                 {% endif %}
-                                {% if catID is null %}
-                                  <li><a href="https://www.facebook.com/krazy8.headshop" id="socialfb" target="_blank">Facebook</a></li>
-                                  <li><a href="https://www.instagram.com/krazy8.headshop" id="socialig" target="_blank">Instagram</a></li>
-                                {% endif %}
                             {% endfor %}
-
+                            {% if i is 3 %}
+                              <li><a href="https://www.facebook.com/krazy8.headshop" id="socialfb" target="_blank">Facebook</a></li>
+                              <li><a href="https://www.instagram.com/krazy8.headshop" id="socialig" target="_blank">Instagram</a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
