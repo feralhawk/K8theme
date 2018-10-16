@@ -4311,7 +4311,7 @@ input[type="button"].btn-block {
   z-index: 2;
   color: #fff;
   cursor: default;
-  background-color: #008ebd;
+  background-color: #4cc700;
   border-color: #008ebd;
 }
 
@@ -10154,7 +10154,7 @@ body .wrapper-main {
 }
 
 .page-content {
-  background-color: #e7e7e7;
+  background-color: #ffffff;
 }
 
 .page-content.basket, .page-content.checkout, .page-content.contact, .page-content.myaccount {
@@ -10168,7 +10168,7 @@ body .wrapper-main {
 }
 
 .page-content:not(.categoriegrid) > .row > .col-xs-12 {
-  margin-top: 180px;
+  margin-top: 10px;
   height: 100%;
 }
 
@@ -13552,7 +13552,7 @@ body.menu-is-visible {
 
 @media (min-width: 992px) {
   .wrapper-main > nav.container-max {
-  margin-top: 176px;
+  /* margin-top: 176px; */
   }
 }
 
@@ -14784,6 +14784,7 @@ body.menu-is-visible {
   overflow: hidden;
   background-color: #fff;
   margin-bottom: 15px;
+  border: 1px solid #dadada;
 }
 
 .cmp-product-thumb .tag-list span {
@@ -16117,7 +16118,7 @@ body.menu-is-visible {
 }
 
 .add-to-wish-list:hover i {
-  color: #ff0700 !important;
+  color: #61fe01 !important;
 }
 
 .add-to-wish-list.active i {
