@@ -2292,7 +2292,7 @@ fieldset[disabled] a.btn {
 
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
-  background-color: #00688a;
+  background-color: #4cc700;
   border-color: #006080;
 }
 
@@ -4515,8 +4515,10 @@ a.tag:focus, a.tag:hover {
 }
 
 .alert-info {
-  background-color: #d9edf7;
-  border-color: #bcdff1;
+  background-color: #ffffff;
+  border-color: #ff5f00;
+  border-style: dashed;
+  border-width: 2px;
   color: #31708f;
 }
 
@@ -10177,7 +10179,11 @@ body .wrapper-main {
 }
 
 .container-max.login {
-  margin-top: 20rem;
+  /* margin-top: 20rem; */
+  padding-top: 30px;
+  background-color: #ffffff;
+  border: 1px solid #000;
+  box-shadow: 10px 10px grey;
 }
 
 .page-not-found i.fa-search {
@@ -12627,6 +12633,12 @@ a.cookie-bar__link{
 
 .wrapper-main #page-body {
   margin: 10px auto 350px;
+}
+
+@media (max-width:470px) {
+  .wrapper-main #page-body {
+    margin: 10px auto 480px;
+  }
 }
 
 @media print {
