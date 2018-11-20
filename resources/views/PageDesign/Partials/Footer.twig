@@ -32,8 +32,8 @@
 
     <div class="container-max footer-content">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="footer-services m-t-2">
+            <div class="footer-services m-t-2">
+                <div class="col-xs-12 col-sm-12 col-lg-4">
                     {% set paymentMethodContent = LayoutContainer.show("Ceres::Homepage.PaymentMethods") %}
                     {% if paymentMethodContent|trim is not empty %}
                         <div class="services-payment m-b-1">
@@ -41,6 +41,8 @@
                             {{ paymentMethodContent }}
                         </div>
                     {% endif %}
+                </div>
+                <div class="col-xs-6 col-sm-6 col-lg-4">
                     {% set shippingContent = LayoutContainer.show("Ceres::Homepage.Shipping") %}
                     {% if shippingContent|trim is not empty %}
                         <div class="services-shipping m-b-1">
@@ -48,6 +50,8 @@
                             {{ shippingContent }}
                         </div>
                     {% endif %}
+                </div>
+                <div class="col-xs-6 col-sm-6 col-lg-4">
                     {% set certifiedContent = LayoutContainer.show("Ceres::Homepage.Certified") %}
                     {% if certifiedContent|trim is not empty %}
                         <div class="services-certificate m-b-1">
