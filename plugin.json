@@ -32,17 +32,17 @@
             "key"           :"K8theme\\Containers\\K8themeItemListContainer3",
             "name"          :"Third item list",
             "description"   :"Display a configurable list of items in your online store"
-        }
+        },
         {
             "key"           :"K8theme\\Containers\\K8themePaymentMethodsContainer",
             "name"          :"Payment Methods",
             "description"   :"Display a list of all available payment methods"
-        }
+        },
         {
             "key"           :"K8theme\\Containers\\K8themeShippingMethodsContainer",
             "name"          :"Shipping Methods",
             "description"   :"Display a list of all available shipping methods"
-        }
+        },
         {
             "key"           :"K8theme\\Containers\\K8themeCertifiedByContainer",
             "name"          :"Payment Methods",
