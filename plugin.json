@@ -1,5 +1,5 @@
 {
-    "version"               :"0.0.1",
+    "version"               :"0.0.2",
     "name"                  :"K8theme",
     "description"           :"Basic theme plugin for Ceres",
     "shortDescription"      :{ "de": "Basic Theme Plugin für Ceres.", "en": "Basic theme plugin for Ceres." },
@@ -32,6 +32,21 @@
             "key"           :"K8theme\\Containers\\K8themeItemListContainer3",
             "name"          :"Third item list",
             "description"   :"Display a configurable list of items in your online store"
+        },
+        {
+            "key"           :"K8theme\\Containers\\K8themePaymentMethodsContainer",
+            "name"          :"Payment Methods Container",
+            "description"   :"Display a list of payment methods"
+        },
+        {
+            "key"           :"K8theme\\Containers\\K8themeShippingMethodsContainer",
+            "name"          :"Shipping Methods Container",
+            "description"   :"Display a list of shipping methods"
+        },
+        {
+            "key"           :"K8theme\\Containers\\K8themeCertifiedByContainer",
+            "name"          :"Certified By",
+            "description"   :"Display a list of certification services"
         }
     ]
 }
