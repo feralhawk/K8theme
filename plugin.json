@@ -1,5 +1,5 @@
 {
-    "version"               :"0.0.2",
+    "version"               :"0.0.1",
     "name"                  :"K8theme",
     "description"           :"Basic theme plugin for Ceres",
     "shortDescription"      :{ "de": "Basic Theme Plugin für Ceres.", "en": "Basic theme plugin for Ceres." },
