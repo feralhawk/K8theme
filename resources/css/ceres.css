@@ -329,6 +329,8 @@ body {
   background-attachment: fixed;
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 [tabindex="-1"]:focus {
@@ -9356,9 +9358,7 @@ a.text-danger:focus, a.text-danger:hover {
   background-repeat: no-repeat;
   position: relative;
   vertical-align: middle;
-  line-height: 1;
   display: inline-block;
-  text-indent: 9999px;
 }
 
 .square-container {
@@ -10166,6 +10166,13 @@ body .wrapper-main {
 
 .page-content {
   background-color: #ffffff;
+  box-shadow: 10px 10px grey;
+}
+
+.category-title {
+  background-color: #000;
+  color: #61fe01;
+
 }
 
 .page-content.basket, .page-content.checkout, .page-content.contact, .page-content.myaccount {
@@ -10188,7 +10195,7 @@ body .wrapper-main {
   z-index: auto;
 }
 
-.container-max.login {
+.container-max.login, .container-max.registration {
   /* margin-top: 20rem; */
   padding-top: 30px;
   background-color: #ffffff;
@@ -10283,6 +10290,7 @@ a:active {
   .page-content.basket, .page-content.checkout, .page-content.contact, .page-content.myaccount {
     padding-left: 15px;
     padding-right: 15px;
+    box-shadow: 10px 10px grey;
   }
 }
 
@@ -12642,12 +12650,12 @@ a.cookie-bar__link{
 }
 
 .wrapper-main #page-body {
-  margin: 10px auto 350px;
+  margin: 10px auto 25px;
 }
 
 @media (max-width:470px) {
   .wrapper-main #page-body {
-    margin: 10px auto 480px;
+    margin: 10px auto 20px;
   }
 }
 
@@ -13751,7 +13759,7 @@ body.menu-is-visible {
   display: block;
   background-color: #000000;
   color: #61fe01;
-  position: absolute;
+  /* position: absolute; */
   width:  100%;
   bottom: 0;
   left: 0;
@@ -13785,19 +13793,19 @@ body.menu-is-visible {
 }
 
 #socialig {
-  background-image: url('https://cdn02.plentymarkets.com/qc8qz643lcav/frontend/layout/bilder/wartung/icon_ig.png');background-position: 0 0;
+  background-position: -1px -548px;
  }
 
 #socialfb {
-  background-image: url('https://cdn02.plentymarkets.com/qc8qz643lcav/frontend/layout/bilder/wartung/icon_fb.png');background-position: 0 0;
+  background-position: -1px -484px;
  }
 
 #socialig:hover {
-  background-position: 0 100%;
+  background-position: -1px -578px;
  }
 
 #socialfb:hover {
-  background-position: 0 100%;
+  background-position: -1px -514px;
 }
 
 .footer .svg.plenty-brand {
@@ -13819,39 +13827,82 @@ body.menu-is-visible {
 }
 
 .footer .footer-services {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: column nowrap;
-      flex-flow: column nowrap;
+  padding-top: 1.5rem !important;
 }
 
-.footer .footer-services .services-payment,
-.footer .footer-services .services-shipping,
-.footer .footer-services .services-certificate {
-  display: inline-block;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -ms-flex-flow: row wrap;
-      flex-flow: row wrap;
-  -ms-flex: 0 1 auto;
-      flex: 0 1 auto;
+.footer .footer-services .footer-payment-methods,
+.footer .footer-services .footer-shipping-methods,
+.footer .footer-services .footer-certifiedby {
+  border: none;
+  color: #909090;
 }
 
-.footer .footer-services .services-certificate {
-  -ms-flex: 1 0 auto;
-      flex: 1 0 auto;
+.footer .footer-services .footer-certifiedby ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .footer .footer-services .services-title {
   width: 100%;
 }
 
-.footer .footer-services a {
-  -ms-flex: 1 1 auto;
-      flex: 1 1 auto;
+.footer .footer-services .footer-payment-methods div {
+  height: 40px;
+  width: 80px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.footer .footer-services #su {
+  background-position: -1px -256px;
+}
+
+.footer .footer-services #pp {
+  background-position: -1px -88px;
+}
+
+.footer .footer-services #ls {
+  background-position: -1px -46px;
+}
+
+.footer .footer-services #re {
+  background-position: -1px -172px;
+}
+
+.footer .footer-services #kk {
+  background-position: -1px -130px;
+}
+
+.footer .footer-services #vk {
+  background-position: -1px -214px;
+}
+
+.footer .footer-services #dhl {
+  background-position: -1px -4px;
+}
+
+.footer .footer-services #ssl {
+  background-position: -7px -401px;
+  width: 70px;
+  height: 80px;
+  margin-right: 5px;
+}
+
+.footer .footer-services #ppks {
+  background-position: -6px -312px;
+  width: 58px;
+  height: 81px;
+  margin-right: 5px;
+}
+
+.footer .footer-services .footer-shipping-methods div {
+  height: 40px;
+}
+
+.footer .footer-services .footer-certifiedby ul li {
   display: inline-block;
-  max-width: 5rem;
-  margin-right: .5rem;
+  height: 80px;
 }
 
 .footer .footer-services img {
@@ -13873,13 +13924,6 @@ body.menu-is-visible {
 
 .footer .btn-mail:hover {
   background-color: #b2b1a7;
-}
-
-@media (min-width: 544px) {
-  .footer .footer-services {
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-  }
 }
 
 .plenty-brand {
