@@ -35,12 +35,12 @@
         },
         {
             "key"           :"K8theme\\Containers\\K8themePaymentMethodsContainer",
-            "name"          :"Payment Methods Container",
+            "name"          :"Payment Methods",
             "description"   :"Display a list of payment methods"
         },
         {
             "key"           :"K8theme\\Containers\\K8themeShippingMethodsContainer",
-            "name"          :"Shipping Methods Container",
+            "name"          :"Shipping Methods",
             "description"   :"Display a list of shipping methods"
         },
         {
