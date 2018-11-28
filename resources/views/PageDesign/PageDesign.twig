@@ -52,8 +52,10 @@
         {% include getPartial('header') %}
 
         <div id="page-body" class="main">
-            {% if services.template.isCategory() == "1" & services.template.categoryType() == "CONTENT" %}
-              <div class="page-content container-max">ullebulle</div>
+            {% if services.template.isCategory() == "1" %}
+              {% if services.template.categoryType() == "CONTENT" %}
+                <div class="page-content container-max">ullebulle</div>
+              {% endif %}
             {% endif %}
                 {% block PageBody %}
                     <!-- inject content of inherited templates here -->
