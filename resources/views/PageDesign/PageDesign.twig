@@ -54,7 +54,7 @@
         <div id="page-body" class="main">
             {% if services.template.isCategory() == "1" %}
               {% if services.template.categoryType() != "content" %}
-                <div class="page-content container-max {% return services.template.categoryType() %}">
+                <div class="page-content container-max {% services.template.categoryType() %}">
               {% endif %}
             {% endif %}
                 {% block PageBody %}
