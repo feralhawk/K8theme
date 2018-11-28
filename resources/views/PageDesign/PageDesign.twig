@@ -52,7 +52,7 @@
         {% include getPartial('header') %}
 
         <div id="page-body" class="main">
-            {% if services.template.isCategory('CONTENT') == "1" %}
+            {% if services.template.isCategory() == "1" && services.template.categoryType() == "CONTENT" %}
               <div class="page-content container-max">ullebulle</div>
             {% endif %}
                 {% block PageBody %}
