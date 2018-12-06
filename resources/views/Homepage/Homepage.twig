@@ -5,5 +5,11 @@
 	<!-- Insert markup for homepage here -->
 
     <h1>My homepage</h1>
+    {% if config("Ceres.homepage.showShopBuilderContent") == "true" or request.get('isContentBuilder') == 1 %}
 
+        {% for content in container("Ceres::Homepage") if content.plugin == "Plenty" %}
+            {{ content.result | raw }}
+        {% endfor %}
+
+    {% endif %}
 {% endblock %}
