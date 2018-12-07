@@ -1,6 +1,7 @@
 <?php
 namespace K8theme\Providers;
 
+use Theme\Contexts\K8themeContext;
 use Ceres\Caching\NavigationCacheSettings;
 use Ceres\Caching\SideNavigationCacheSettings;
 use IO\Services\ContentCaching\Services\Container;
@@ -21,6 +22,12 @@ class K8themeServiceProvider extends ServiceProvider
     }
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
+        // K8theme Contexts
+        $eventDispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
+         {
+             $templateContainer->setContext( K8themeContext::class);
+             return false;
+         }, 0);
 
         $enabledOverrides = explode(", ", $config->get("K8theme.templates.override"));
 
