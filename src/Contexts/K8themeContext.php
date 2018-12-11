@@ -1,5 +1,5 @@
 <?php
-namespace ThemeName\Contexts;
+namespace K8theme\Contexts;
 
 use IO\Helper\ContextInterface;
 use Ceres\Contexts\SingleItemContext;
@@ -7,10 +7,11 @@ use Ceres\Contexts\SingleItemContext;
 use IO\Services\ItemSearch\Services\ItemSearchService;
 use IO\Services\ItemSearch\SearchPresets\CrossSellingItems;
 
-class MyThemeContext extends SingleItemContext implements ContextInterface
+class K8themeContext extends SingleItemContext implements ContextInterface
 {
 	public $accessory;
-
+  public $similar;
+  public $replacementpart
 	public function init($params)
 	{
 		parent::init($params);
@@ -18,9 +19,27 @@ class MyThemeContext extends SingleItemContext implements ContextInterface
         			"itemId" => $this->item['documents'][0]['data']['item']['id'],
         			"relation" => "Accessory"      // Nutze die Liste Zubehoer
        		);
-     		$searchfactory = CrossSellingItems::getSearchFactory( $options );
-     		$searchfactory->setPage(1, 4); // Begrenze auf 4 Artikel
-      		$result = pluginApp(ItemSearchService::class)->getResult($searchfactory);
-      		$this->accessory = $result['documents'];
+ 		$searchfactory = CrossSellingItems::getSearchFactory( $options );
+ 		$searchfactory->setPage(1, 4); // Begrenze auf 4 Artikel
+  	$result = pluginApp(ItemSearchService::class)->getResult($searchfactory);
+  	$this->accessory = $result['documents'];
+
+    $options = array(
+              "itemId" => $this->item['documents'][0]['data']['item']['id'],
+              "relation" => "Similar"      // Nutze die Liste Ähnlich
+          );
+    $searchfactory = CrossSellingItems::getSearchFactory( $options );
+  	$searchfactory->setPage(1, 4); // Begrenze auf 4 Artikel
+  	$result = pluginApp(ItemSearchService::class)->getResult($searchfactory);
+    $this->similar= $result['documents'];
+
+    $options = array(
+              "itemId" => $this->item['documents'][0]['data']['item']['id'],
+              "relation" => "ReplacementPart"      // Nutze die Liste Ähnlich
+          );
+    $searchfactory = CrossSellingItems::getSearchFactory( $options );
+    $searchfactory->setPage(1, 4); // Begrenze auf 4 Artikel
+    $result = pluginApp(ItemSearchService::class)->getResult($searchfactory);
+    $this->replacementpart= $result['documents'];
 	}
 }

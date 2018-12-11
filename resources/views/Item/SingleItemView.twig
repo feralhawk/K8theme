@@ -30,12 +30,27 @@
         {% endif %}
     </div>
     <div slot="CrossSellingAccessory">
-
-	{% if accessory|length > 0 %}
-        		<div class="crossSelling">
-        			<span class="h3">Das passt dazu:</span>
-        			<container-item-list :items="null"></container-item-list>
-      		</div>
-	{% endif %}
+    	{% if accessory|length > 0 %}
+            		<div class="crossSelling">
+            			<span class="h3">Passendes Zubehör:</span>
+            			<container-item-list :items="null"></container-item-list>
+          		</div>
+    	{% endif %}
    </div>
+   <div slot="CrossSellingSimilar">
+     {% if accessory|length > 0 %}
+               <div class="crossSelling">
+                 <span class="h3">Das könnte Dir auch gefallen:</span>
+                 <container-item-list :items="null"></container-item-list>
+             </div>
+     {% endif %}
+  </div>
+  <div slot="CrossSellingReplacementPart">
+    {% if accessory|length > 0 %}
+              <div class="crossSelling">
+                <span class="h3">Das passt dazu:</span>
+                <container-item-list :items="null"></container-item-list>
+            </div>
+    {% endif %}
+ </div>
 </single-item>
