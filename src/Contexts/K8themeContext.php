@@ -1,5 +1,5 @@
 <?php
-namespace ThemeName\Contexts;
+namespace K8theme\Contexts;
 
 use IO\Helper\ContextInterface;
 use Ceres\Contexts\SingleItemContext;
