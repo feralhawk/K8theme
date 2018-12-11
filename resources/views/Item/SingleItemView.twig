@@ -38,7 +38,7 @@
     	{% endif %}
    </div>
    <div slot="CrossSellingSimilar">
-     {% if accessory|length > 0 %}
+     {% if similar|length > 0 %}
                <div class="crossSelling">
                  <span class="h3">Das könnte Dir auch gefallen:</span>
                  <container-item-list :items="null"></container-item-list>
@@ -46,7 +46,7 @@
      {% endif %}
   </div>
   <div slot="CrossSellingReplacementPart">
-    {% if accessory|length > 0 %}
+    {% if replacementpart|length > 0 %}
               <div class="crossSelling">
                 <span class="h3">Das passt dazu:</span>
                 <container-item-list :items="null"></container-item-list>
