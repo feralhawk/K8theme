@@ -11,7 +11,7 @@ class K8themeContext extends SingleItemContext implements ContextInterface
 {
 	public $accessory;
   public $similar;
-  public $replacementpart
+  public $replacementpart;
 	public function init($params)
 	{
 		parent::init($params);
