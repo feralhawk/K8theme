@@ -7,7 +7,7 @@ use Ceres\Contexts\SingleItemContext;
 use IO\Services\ItemSearch\Services\ItemSearchService;
 use IO\Services\ItemSearch\SearchPresets\CrossSellingItems;
 
-class K8themeContext extends SingleItemContext implements ContextInterface
+class K8themeSingleItemContext extends SingleItemContext implements ContextInterface
 {
 	public $accessory;
   public $similar;
