@@ -22,12 +22,6 @@ class K8themeServiceProvider extends ServiceProvider
     }
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
-        // K8theme Contexts
-        $eventDispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
-         {
-             $templateContainer->setContext( K8themeSingleItemContext::class);
-             return false;
-         }, 0);
 
         $enabledOverrides = explode(", ", $config->get("K8theme.templates.override"));
 
@@ -251,5 +245,12 @@ class K8themeServiceProvider extends ServiceProvider
                 return false;
             }, self::PRIORITY);
         }
+
+        // K8theme Contexts
+        $eventDispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
+         {
+             $templateContainer->setContext( K8themeSingleItemContext::class);
+             return false;
+         }, 0);
     }
 }
