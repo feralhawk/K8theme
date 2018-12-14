@@ -35,7 +35,7 @@ class K8themeSingleItemContext extends SingleItemContext implements ContextInter
 
     $options = array(
               "itemId" => $this->item['documents'][0]['data']['item']['id'],
-              "relation" => "ReplacementPart"      // Nutze die Liste Ähnlich
+              "relation" => "ReplacementPart"      // Nutze die Liste Ersatzteil
           );
     $searchfactory = CrossSellingItems::getSearchFactory( $options );
     $searchfactory->setPage(1, 4); // Begrenze auf 4 Artikel

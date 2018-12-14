@@ -1,7 +1,7 @@
 <?php
 namespace K8theme\Providers;
 
-use Theme\Contexts\K8themeContext;
+use K8theme\Contexts\K8themeSingleItemContext;
 use Ceres\Caching\NavigationCacheSettings;
 use Ceres\Caching\SideNavigationCacheSettings;
 use IO\Services\ContentCaching\Services\Container;
