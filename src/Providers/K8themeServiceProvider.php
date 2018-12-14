@@ -247,7 +247,7 @@ class K8themeServiceProvider extends ServiceProvider
         }
 
         // K8theme Contexts
-        $eventdispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
+        $eventDispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
          {
              $templateContainer->setContext( K8themeSingleItemContext::class);
              return false;
