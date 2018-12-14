@@ -1,7 +1,6 @@
 <?php
 namespace K8theme\Providers;
 
-use K8theme\Contexts\K8themeSingleItemContext;
 use Ceres\Caching\NavigationCacheSettings;
 use Ceres\Caching\SideNavigationCacheSettings;
 use IO\Services\ContentCaching\Services\Container;
@@ -11,6 +10,7 @@ use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
 use Plenty\Plugin\ConfigRepository;
+use K8theme\Contexts\K8themeSingleItemContext;
 
 class K8themeServiceProvider extends ServiceProvider
 {
