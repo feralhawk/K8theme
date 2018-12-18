@@ -19,7 +19,7 @@
     <div slot="AdditionalContentAfterVAT">{{ LayoutContainer.show("Ceres::SingleItem.AdditionalContentAfterVAT", item.documents[0].data) }}</div>
     <template slot="AddDetailTabs">{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabs", item.documents[0].data) }}</template>
     <template slot="AddDetailTabsContent">{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabsContent", item.documents[0].data) }}</template>
-    <div slot="ItemListContainer">{{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", item) }}</div>
+    <div slot="ItemListContainer">{{ LayoutContainer.show("K8theme::SingleItem.ItemListContainer", item) }}</div>
     <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
     <div slot="ImageCarousel">
         {% set ImageCarouselOverride = LayoutContainer.show("Ceres::SingleItem.ImageCarousel") %}
@@ -31,26 +31,26 @@
     </div>
     <div slot="CrossSellingAccessory">
     	{% if accessory|length > 0 %}
-            		<div class="crossSelling">
+            	<div class="crossSelling">
             			<span class="h3">Passendes Zubehör:</span>
             			<container-item-list :items="{{ accessory| json_encode }}"></container-item-list>
           		</div>
     	{% endif %}
-   </div>
-   <div slot="CrossSellingSimilar">
-     {% if similar|length > 0 %}
-               <div class="crossSelling">
+    </div>
+    <div slot="CrossSellingSimilar">
+      {% if similar|length > 0 %}
+             <div class="crossSelling">
                  <span class="h3">Das könnte Dir auch gefallen:</span>
                  <container-item-list :items="{{ similar| json_encode }}"></container-item-list>
              </div>
-     {% endif %}
-  </div>
-  <div slot="CrossSellingReplacementPart">
-    {% if replacementpart|length > 0 %}
-              <div class="crossSelling">
+      {% endif %}
+    </div>
+    <div slot="CrossSellingReplacementPart">
+      {% if replacementpart|length > 0 %}
+            <div class="crossSelling">
                 <span class="h3">Das passt dazu:</span>
                 <container-item-list :items="{{ replacementpart| json_encode }}"></container-item-list>
             </div>
-    {% endif %}
- </div>
+      {% endif %}
+    </div>
 </single-item>
