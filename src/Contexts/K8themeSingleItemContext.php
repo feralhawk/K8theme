@@ -2,7 +2,7 @@
 namespace K8theme\Contexts;
 
 use IO\Helper\ContextInterface;
-use K8theme\Contexts\SingleItemContext;
+use Ceres\Contexts\SingleItemContext;
 
 use IO\Services\ItemSearch\Services\ItemSearchService;
 use IO\Services\ItemSearch\SearchPresets\CrossSellingItems;
