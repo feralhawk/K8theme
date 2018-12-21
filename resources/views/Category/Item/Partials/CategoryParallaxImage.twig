@@ -8,14 +8,14 @@
                     {% if categoryDescriptionTop == "description1" or categoryDescriptionTop == "both" %}
                         <div class="category-description m-b-1" data-category-description="1">
                           {% if category.details[0].description is not empty %}<div>{% endif %}
-                            {{ category.details[0].description | raw }}
+                            {{ category.details[0].description }}
                           {% if category.details[0].description is not empty %}</div>{% endif %}
                         </div>
                     {% endif %}
                     {% if categoryDescriptionTop == "description2" or categoryDescriptionTop == "both" %}
                         <div class="category-description m-b-1" data-category-description="2">
                           {% if category.details[0].description2 is not empty %}<div>{% endif %}
-                            {{ category.details[0].description2 | raw }}
+                            {{ category.details[0].description2 }}
                           {% if category.details[0].description2 is not empty %}</div>{% endif %}
                         </div>
                     {% endif %}
