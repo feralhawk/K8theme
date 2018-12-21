@@ -6,10 +6,14 @@
             <div class="parallax-text-container">
                 <h1 class="h2 category-title">{{ category.details[0].name | raw }}</h1>
                     {% if categoryDescriptionTop == "description1" or categoryDescriptionTop == "both" %}
+                       @if (isset(category.details[0].description))
                         <div class="category-description m-b-1" data-category-description="1">{{ category.details[0].description | raw }}</div>
+                       @endif
                     {% endif %}
                     {% if categoryDescriptionTop == "description2" or categoryDescriptionTop == "both" %}
+                       @if (isset(category.details[0].description2))
                         <div class="category-description m-b-1" data-category-description="2">{{ category.details[0].description2 | raw }}</div>
+                       @endif
                     {% endif %}
             </div>
         </div>
