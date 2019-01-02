@@ -321,8 +321,8 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   color: #4D4F4D;
-  background-color: #ffffff;
-  background-image: url(https://cdn02.plentymarkets.com/qc8qz643lcav/frontend/layout/bilder/HG01.jpg);
+  background-color: #000000;
+  background-image: url(https://cdn02.plentymarkets.com/qc8qz643lcav/frontend/layout/bilder/HG03.jpg);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%;
@@ -10169,13 +10169,14 @@ body .wrapper-main {
 
 .page-content {
   background-color: #ffffff;
-  box-shadow: 10px 10px grey;
+  box-shadow: 12px 20px 15px 3px black;
 }
 
 .category-title {
   background-color: #000;
   color: #61fe01;
-
+  padding: 10px;
+  text-align: center;
 }
 
 .page-content.basket, .page-content.checkout, .page-content.contact, .page-content.myaccount {
@@ -12919,7 +12920,7 @@ a.cookie-bar__link{
 
 .cmp-search-box .search-input {
   -ms-flex: 1 0 70%;
-      flex: 1 0 70%;
+  flex: 1 0 70%;
   display: inline-block;
   vertical-align: top;
   font-size: 1.3rem;
@@ -12927,6 +12928,7 @@ a.cookie-bar__link{
   border: none;
   padding: .4rem 1rem;
   outline: none;
+  height: 30px;
 }
 
 .cmp-search-box .search-submit {
@@ -12940,6 +12942,7 @@ a.cookie-bar__link{
   border: none;
   transition: all 300ms;
   outline: none;
+  height: 30px;
 }
 
 .cmp-search-box .search-submit:hover {
@@ -13242,7 +13245,7 @@ body.menu-is-visible {
 }
 
 #mainNavbarCollapsable ul.mainmenu li ul {
-  background: #008ebd;
+  background: #61fe01;
   left: 0;
   list-style: none;
   margin: 0;
@@ -13307,7 +13310,7 @@ body.menu-is-visible {
     visibility: hidden;
     opacity: 0;
     transition: all .1s ease;
-    background: #00688a;
+    background: #000000;
     height: auto;
     top: 100%;
     text-align: center;
@@ -13320,8 +13323,8 @@ body.menu-is-visible {
     position: absolute;
   }
   #mainNavbarCollapsable ul.mainmenu > li > ul > li {
-    background: transparent;
-    color: #fff;
+    background: #000000;
+    color: #61fe01;
     transition: all .1s ease;
     width: 100%;
     min-width: 150px;
@@ -13329,8 +13332,8 @@ body.menu-is-visible {
   }
   .no-touch #mainNavbarCollapsable ul.mainmenu > li > ul > li:hover,
   .touch #mainNavbarCollapsable ul.mainmenu > li > ul > li.hover {
-    background: #008ebd;
-    color: #fff;
+    background: #61fe01;
+    color: #000000;
     text-decoration: none;
   }
   #mainNavbarCollapsable ul.mainmenu > li > ul > li > a {
@@ -13338,8 +13341,8 @@ body.menu-is-visible {
   }
   .no-touch #mainNavbarCollapsable ul.mainmenu > li:hover,
   .touch #mainNavbarCollapsable ul.mainmenu > li.hover {
-    background-color: #008ebd;
-    color: #fff;
+    background-color: #61fe01;
+    color: #000000;
     transition: all .1s ease;
   }
   .no-touch #mainNavbarCollapsable ul.mainmenu > li:hover > ul,
@@ -13402,7 +13405,8 @@ body.menu-is-visible {
     padding: 1em;
     min-height: 10em;
     max-height: 50em;
-    border: 8px solid #61fe01;
+    border-top: 8px solid #61fe01;
+    border-bottom: 8px solid #61fe01;
   }
   nav.navbar.megamenu #mainNavbarCollapsable ul.mainmenu > li > ul.collapse > li {
     display: inline-block;
@@ -16533,6 +16537,7 @@ body.menu-is-visible {
 
 .parallax-img-container .parallax-text-container {
   position: inherit;
+  box-shadow: 12px 15px 13px 0px black;
 }
 
 .parallax-img-container .parallax-text-container h1 {
