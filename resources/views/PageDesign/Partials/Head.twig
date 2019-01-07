@@ -6,7 +6,7 @@
 {% set lang = services.sessionStorage.getLang() %}
 
 {% if ceresConfig.global.favicon is empty %}
-    {% set favicon = url ~ '/tpl/favicon_' ~ webstoreConfig.webstoreId ~ '.ico' %}
+    {% set favicon = url ~ '/tpl/favicon.ico' %}
 {% else %}
     {% set favicon = ceresConfig.global.favicon %}
 {% endif %}
