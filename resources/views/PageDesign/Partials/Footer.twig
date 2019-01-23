@@ -18,7 +18,7 @@
     </div>
 
     {% if numberOfFeatures > 0 %}
-        <div class="footer-features p-y-1 container-max">
+        <div class="footer-features py-1 container-max">
             <div class="row">
                 {% for i in 1..numberOfFeatures %}
                     <div class="col-12 col-sm-4 text-center">
@@ -37,7 +37,7 @@
                 <div class="col-12 col-sm-12 col-lg-4">
                     {% set paymentMethodContent = LayoutContainer.show("Ceres::Homepage.PaymentMethods") %}
                     {% if paymentMethodContent|trim is not empty %}
-                        <div class="services-payment m-b-1">
+                        <div class="services-payment mb-1">
                             <strong class="services-title">{{ trans("Ceres::Template.footerPaymentMethods") }}</strong>
                             {{ paymentMethodContent }}
                         </div>
@@ -46,7 +46,7 @@
                 <div class="col-6 col-sm-6 col-lg-4">
                     {% set shippingContent = LayoutContainer.show("Ceres::Homepage.Shipping") %}
                     {% if shippingContent|trim is not empty %}
-                        <div class="services-shipping m-b-1">
+                        <div class="services-shipping mb-1">
                             <strong class="services-title">{{ trans("Ceres::Template.footerOrderShippedBy") }}</strong>
                             {{ shippingContent }}
                         </div>
@@ -55,7 +55,7 @@
                 <div class="col-6 col-sm-6 col-lg-4">
                     {% set certifiedContent = LayoutContainer.show("Ceres::Homepage.Certified") %}
                     {% if certifiedContent|trim is not empty %}
-                        <div class="services-certificate m-b-1">
+                        <div class="services-certificate mb-1">
                             <strong class="services-title">{{ trans("Ceres::Template.footerCertifiedBy") }}</strong>
                             {{ certifiedContent }}
                         </div>
@@ -68,7 +68,7 @@
             <hr>
             {% for i in 1..numberOfCols %}
                 <div class="col-6 col-sm-4 col-lg-4">
-                    <nav class="footer-column m-b-2">
+                    <nav class="footer-column mb-2">
                         <h2 class="h5">{{ trans('Ceres::Template.footerColumnTitle' ~ i) }}</h2>
                         <ul class="list-unstyled">
 
@@ -93,7 +93,7 @@
                     </nav>
                 </div>
             {% endfor %}
-            <hr class="d-sm-none m-y-2">
+            <hr class="d-sm-none my-2">
             <div class="col-6 col-sm-5">
                 <div class="footer-column">
                     {{ LayoutContainer.show("Ceres::Footer.RowOne") }}
@@ -113,7 +113,7 @@
         </div>
 
         {% set cat = services.category.get(config('Ceres.global.category.legal_disclosure')) %}
-        <div class="copyright text-center m-y-1">
+        <div class="copyright text-center my-1">
             <div class="static-link-list">
                 {% autoescape false %}
                     <a href="{{ urls.cancellationRights }}">{{ trans("Ceres::Template.footerCancellationRight", {"hyphen": "&shy;"}) }}</a>
