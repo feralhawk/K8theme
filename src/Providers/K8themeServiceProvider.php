@@ -1,4 +1,5 @@
 <?php
+
 namespace K8theme\Providers;
 
 use Ceres\Caching\NavigationCacheSettings;
@@ -9,8 +10,13 @@ use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
+use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 use Plenty\Plugin\ConfigRepository;
 use K8theme\Contexts\K8themeSingleItemContext;
+
+
+
+
 
 class K8themeServiceProvider extends ServiceProvider
 {
@@ -20,6 +26,7 @@ class K8themeServiceProvider extends ServiceProvider
     {
       $this->getApplication()->register(K8themeRouteServiceProvider::class);
     }
+
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
 
@@ -82,7 +89,7 @@ class K8themeServiceProvider extends ServiceProvider
         }
 
         // Override template for item categories
-        if (in_array("category_item", $enabledOverrides) || in_array("all", $enabledOverrides))
+        if (in_array("category_view", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
 
             $dispatcher->listen('IO.tpl.category.item', function (TemplateContainer $container)
@@ -153,13 +160,13 @@ class K8themeServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.item', function (TemplateContainer $container)
             {
-                $container->setTemplate('K8theme::Item.SingleItem');
+                $container->setTemplate('K8theme::Item.SingleItemWrapper');
                 return false;
             }, self::PRIORITY);
         }
 
-        // Override category view
-        if (in_array("category_view", $enabledOverrides) || in_array("all", $enabledOverrides))
+        // Override search view
+        if (in_array("search", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
 
             $dispatcher->listen('IO.tpl.search', function (TemplateContainer $container)
@@ -180,6 +187,50 @@ class K8themeServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
+        // Override wish list
+        if (in_array("wish_list", $enabledOverrides) || in_array("all", $enabledOverrides))
+        {
+
+            $dispatcher->listen('IO.tpl.wish-list', function (TemplateContainer $container)
+            {
+                $container->setTemplate('K8theme::WishList.WishListView');
+                return false;
+            }, self::PRIORITY);
+        }
+
+        // Override contact page
+        if (in_array("contact", $enabledOverrides) || in_array("all", $enabledOverrides))
+        {
+
+            $dispatcher->listen('IO.tpl.contact', function (TemplateContainer $container)
+            {
+                $container->setTemplate('K8theme::Customer.Contact');
+                return false;
+            }, self::PRIORITY);
+        }
+
+        // Override order return view
+        if (in_array("order_return", $enabledOverrides) || in_array("all", $enabledOverrides))
+        {
+
+            $dispatcher->listen('IO.tpl.order.return', function (TemplateContainer $container)
+            {
+                $container->setTemplate('K8theme::OrderReturn.OrderReturnView');
+                return false;
+            }, self::PRIORITY);
+        }
+
+        // Override order return confirmation
+        if (in_array("order_return_confirmation", $enabledOverrides) || in_array("all", $enabledOverrides))
+        {
+
+            $dispatcher->listen('IO.tpl.order.return.confirmation', function (TemplateContainer $container)
+            {
+                $container->setTemplate('K8theme::OrderReturn.OrderReturnConfirmation');
+                return false;
+            }, self::PRIORITY);
+        }
+
         // Override cancellation rights
         if (in_array("cancellation_rights", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
@@ -187,6 +238,17 @@ class K8themeServiceProvider extends ServiceProvider
             $dispatcher->listen('IO.tpl.cancellation-rights', function (TemplateContainer $container)
             {
                 $container->setTemplate('K8theme::StaticPages.CancellationRights');
+                return false;
+            }, self::PRIORITY);
+        }
+
+        // Override cancellation form
+        if (in_array("cancellation_form", $enabledOverrides) || in_array("all", $enabledOverrides))
+        {
+
+            $dispatcher->listen('IO.tpl.cancellation-form', function (TemplateContainer $container)
+            {
+                $container->setTemplate('K8theme::StaticPages.CancellationForm');
                 return false;
             }, self::PRIORITY);
         }
@@ -244,6 +306,69 @@ class K8themeServiceProvider extends ServiceProvider
                 $container->setTemplate('K8theme::StaticPages.PageNotFound');
                 return false;
             }, self::PRIORITY);
+        }
+
+        // Override newsletter opt-out page
+        if (in_array("newsletter_opt_out", $enabledOverrides) || in_array("all", $enabledOverrides))
+        {
+
+            $dispatcher->listen('IO.tpl.newsletter.opt-out', function (TemplateContainer $container)
+            {
+                $container->setTemplate('K8theme::Newsletter.NewsletterOptOut');
+                return false;
+            }, self::PRIORITY);
+        }
+
+        $enabledResultFields = explode(", ", $config->get("K8theme.result_fields.override"));
+
+        // Override auto complete list item result fields
+        if (in_array("auto_complete_list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+        {
+
+          $dispatcher->listen( 'IO.ResultFields.AutoCompleteListItem', function(ResultFieldTemplate $templateContainer)
+          {
+              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST, 'K8theme::ResultFields.AutoCompleteListItem');
+          });
+        }
+
+        // Override basket item result fields
+        if (in_array("basket_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+        {
+
+          $dispatcher->listen( 'IO.ResultFields.BasketItem', function(ResultFieldTemplate $templateContainer)
+          {
+              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_BASKET_ITEM, 'K8theme::ResultFields.BasketItem');
+          });
+        }
+
+        // Override category tree result fields
+        if (in_array("category_tree", $enabledResultFields) || in_array("all", $enabledResultFields))
+        {
+
+          $dispatcher->listen( 'IO.ResultFields.CategoryTree', function(ResultFieldTemplate $templateContainer)
+          {
+              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_CATEGORY_TREE, 'K8theme::ResultFields.CategoryTree');
+          });
+        }
+
+        // Override list item result fields
+        if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+        {
+
+          $dispatcher->listen( 'IO.ResultFields.ListItem', function(ResultFieldTemplate $templateContainer)
+          {
+              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_LIST_ITEM, 'K8theme::ResultFields.ListItem');
+          });
+        }
+
+        // Override single item view result fields
+        if (in_array("single_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+        {
+
+          $dispatcher->listen( 'IO.ResultFields.SingleItem', function(ResultFieldTemplate $templateContainer)
+          {
+              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_SINGLE_ITEM, 'K8theme::ResultFields.SingleItem');
+          });
         }
 
         // K8theme Contexts
