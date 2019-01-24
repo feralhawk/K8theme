@@ -4,7 +4,7 @@
 
 <div class="container-max page-content">
     <div class="row">
-        <div class="col-xs-12 m-b-3">
+        <div class="col-12 mb-3">
     {% if config("Ceres.homepage.showShopBuilderContent") == "true" or request.get('isContentBuilder') == 1 %}
 
         {% for content in container("Ceres::Homepage") if content.plugin == "Plenty" %}
