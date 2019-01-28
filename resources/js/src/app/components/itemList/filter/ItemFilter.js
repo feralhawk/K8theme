@@ -1,3 +1,5 @@
+import TranslationService from "services/TranslationService";
+
 Vue.component("item-filter", {
 
     delimiters: ["${", "}"],
@@ -26,6 +28,16 @@ Vue.component("item-filter", {
             });
         },
 
+        facetName()
+        {
+            if (this.facet.translationKey && this.facet.translationKey.length > 0)
+            {
+                return TranslationService.translate("Ceres::Template." + this.facet.translationKey);
+            }
+
+            return this.facet.name;
+        },
+
         ...Vuex.mapState({
             selectedFacets: state => state.itemList.selectedFacets,
             isLoading: state => state.itemList.isLoading
@@ -41,7 +53,7 @@ Vue.component("item-filter", {
     {
         updateFacet(facetValue)
         {
-            this.$store.dispatch("selectFacet", facetValue);
+            this.$store.dispatch("selectFacet", { facetValue });
         },
 
         isSelected(facetValueId)

@@ -1,3 +1,6 @@
+import { isNullOrUndefined } from "../../helper/utils";
+import TranslationService from "../../services/TranslationService";
+
 Vue.component("item-store-special", {
 
     delimiters: ["${", "}"],
@@ -8,7 +11,8 @@ Vue.component("item-store-special", {
         "storeSpecial",
         "recommendedRetailPrice",
         "variationRetailPrice",
-        "decimalCount"
+        "decimalCount",
+        "bundleType"
     ],
 
     data()
@@ -18,41 +22,78 @@ Vue.component("item-store-special", {
             label: "",
             tagClasses:
             {
-                1: "bg-danger",
-                2: "bg-primary",
-                default: "bg-success"
+                1: "badge-offer badge-danger",
+                2: "badge-new badge-primary",
+                3: "badge-top badge-success",
+                default: "badge-success"
+            },
+            labels:
+            {
+                1: TranslationService.translate("Ceres::Template.storeSpecialOffer"),
+                2: TranslationService.translate("Ceres::Template.storeSpecialNew"),
+                3: TranslationService.translate("Ceres::Template.storeSpecialTop")
             }
         };
     },
 
     created()
     {
-        this.tagClass = this.tagClasses[this.storeSpecial.id] || this.tagClasses.default;
-        this.label = this.getLabel();
+        this.initializeStoreSpecial();
     },
 
-    methods: {
-        getLabel()
+    methods:
+    {
+        initializeStoreSpecial()
         {
-            if (this.storeSpecial.id === 1 && this.recommendedRetailPrice)
+            if (!isNullOrUndefined(this.storeSpecial))
             {
-                const percent = this.getPercentageSale();
-
-                if (parseInt(percent) < 0)
-                {
-                    return percent + "%";
-                }
+                this.tagClass = this.tagClasses[this.storeSpecial.id] || this.tagClasses.default;
+            }
+            else
+            {
+                this.tagClass = this.tagClasses.default;
             }
 
-            return this.storeSpecial.names.name;
+            this.label = this.getLabel();
+        },
+
+        getLabel()
+        {
+            if (
+                (isNullOrUndefined(this.storeSpecial) || this.storeSpecial.id === 1) &&
+                !isNullOrUndefined(this.recommendedRetailPrice)
+            )
+            {
+                return this.getPercentageSale();
+            }
+
+            if (isNullOrUndefined(this.storeSpecial))
+            {
+                return "";
+            }
+
+            return this.labels[this.storeSpecial.id] || this.storeSpecial.names.name;
         },
 
         getPercentageSale()
         {
             // eslint-disable-next-line
-            let percent = (1 - this.variationRetailPrice.unitPrice.value / this.recommendedRetailPrice.price.value ) * -100;
+            let percent = (1 - this.variationRetailPrice.unitPrice.value / this.recommendedRetailPrice.unitPrice.value ) * -100;
 
-            return percent.toFixed(this.decimalCount).replace(".", App.decimalSeparator);
+            if (percent < 0)
+            {
+                return percent.toFixed(this.decimalCount).replace(".", App.decimalSeparator) + "%";
+            }
+
+            return "";
+        }
+    },
+
+    watch:
+    {
+        storeSpecial()
+        {
+            this.initializeStoreSpecial();
         }
     }
 });

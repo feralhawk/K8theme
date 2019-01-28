@@ -1,4 +1,4 @@
-import {isNullOrUndefined}from "../../helper/utils";
+import { isNullOrUndefined } from "../../helper/utils";
 import TranslationService from "services/TranslationService";
 
 Vue.component("item-image-carousel", {
@@ -130,13 +130,20 @@ Vue.component("item-image-carousel", {
                 });
                 window.lightbox.imageCountLabel = (current, total) =>
                 {
-                    if (imageCount <= 1)
+                    if (isNullOrUndefined(imageCount) || imageCount <= 1)
                     {
                         return "";
                     }
-                    // owl prepends 2 clones to allow endless scrolling
-                    current = (current % imageCount) + 1;
-                    return TranslationService.translate("Ceres::Template.singleItemImagePreviewCaption", {current: current, total: imageCount});
+                    current -= ((total - imageCount) / 2);
+                    while (current <= 0)
+                    {
+                        current += imageCount;
+                    }
+                    while (current > imageCount)
+                    {
+                        current -= imageCount;
+                    }
+                    return TranslationService.translate("Ceres::Template.singleItemImagePreviewCaption", { current: current, total: imageCount });
                 };
 
                 const originalFn = window.lightbox.changeImage;
@@ -219,6 +226,11 @@ Vue.component("item-image-carousel", {
             const altText = image && image.alternate ? image.alternate : this.$options.filters.itemName(this.currentVariation.documents[0].data);
 
             return altText;
+        },
+
+        getItemName()
+        {
+            return this.$options.filters.itemName(this.currentVariation.documents[0].data);
         }
     }
 });

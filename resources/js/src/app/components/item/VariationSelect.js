@@ -1,4 +1,6 @@
-import {isNull}from "util";
+import { isNull } from "util";
+import { textWidth } from "../../helper/dom";
+import uniq from "lodash/uniq";
 
 const ApiService = require("services/ApiService");
 
@@ -12,7 +14,9 @@ Vue.component("variation-select", {
     props: [
         "attributes",
         "variations",
+        "variationUnits",
         "preselect",
+        "unitPreselect",
         "template"
     ],
 
@@ -20,13 +24,45 @@ Vue.component("variation-select", {
     {
         return {
             // Collection of currently selected variation attributes.
-            selectedAttributes: {}
+            selectedAttributes: {},
+            possibleUnitIds: [],
+            selectedUnitId: 0
         };
     },
 
-    computed: Vuex.mapState({
-        currentVariation: state => state.item.variation
-    }),
+    computed:
+    {
+        hasEmptyOption()
+        {
+            const hasEmptyVariation = this.variations.some(variation =>
+            {
+                return variation.attributes.length <= 0;
+            });
+
+            if (hasEmptyVariation)
+            {
+                // main variation is selectable
+                return true;
+            }
+
+            // Check if all possible combinations can be selected or if an empty option is required to reset the current selection
+            const attributeCombinationCount = Object.keys(this.attributes)
+                .map(attributeId =>
+                {
+                    return Object.keys(this.attributes[attributeId].values).length;
+                })
+                .reduce((prod, current) =>
+                {
+                    return prod * current;
+                }, 1);
+
+            return (attributeCombinationCount * Object.keys(this.variationUnits).length) !== this.variations.length;
+
+        },
+        ...Vuex.mapState({
+            currentVariation: state => state.item.variation
+        })
+    },
 
     created()
     {
@@ -58,8 +94,26 @@ Vue.component("variation-select", {
 
                 if (!!preselectedVariation && preselectedVariation.length === 1)
                 {
+                    const attributes = this.attributes;
+
                     // set attributes of preselected variation
                     this.setAttributes(preselectedVariation[0]);
+
+                    if ((preselectedVariation[0].attributes.length > 0 && this.unitPreselect > 0) || attributes.length === 0)
+                    {
+                        const possibleVariations = this.filterVariations(this.selectedAttributes);
+
+                        if (possibleVariations.length > 1)
+                        {
+                            this.setUnits(possibleVariations);
+                            this.selectedUnitId = this.unitPreselect;
+                        }
+                        else if (this.variations.length > 1 && this.attributes.length === 0)
+                        {
+                            this.setUnits(this.variations);
+                            this.selectedUnitId = this.unitPreselect;
+                        }
+                    }
                 }
             }
         });
@@ -88,7 +142,10 @@ Vue.component("variation-select", {
                     }
                 }
 
-                return variation.attributes.length > 0;
+                return variation.attributes.length > 0 || this.possibleUnitIds.length > 0;
+            }).filter(variation =>
+            {
+                return this.selectedUnitId === 0 || this.selectedUnitId === variation.unitCombinationId;
             });
         },
 
@@ -131,6 +188,16 @@ Vue.component("variation-select", {
             return hasChanges;
         },
 
+        isTextCut(name)
+        {
+            if (this.$refs.labelBoxRef)
+            {
+                return textWidth(name, "Custom-Font, Helvetica, Arial, sans-serif") > this.$refs.labelBoxRef[0].clientWidth;
+            }
+
+            return false;
+        },
+
         onSelectionChange(event)
         {
             this.$emit("is-valid-change", false);
@@ -157,6 +224,11 @@ Vue.component("variation-select", {
 
                 if (possibleVariations.length === 1)
                 {
+                    if (!this.selectedUnitId > 0)
+                    {
+                        this.possibleUnitIds = [];
+                    }
+
                     // only 1 matching variation remaining:
                     // set remaining attributes if not set already. Will trigger this method again.
                     if (!this.setAttributes(possibleVariations[0]))
@@ -168,6 +240,14 @@ Vue.component("variation-select", {
                     {
                         this.onSelectionChange();
                     }
+                }
+                else if (possibleVariations.length > 1)
+                {
+                    this.setUnits(possibleVariations);
+                }
+                else
+                {
+                    this.setUnits([]);
                 }
             }
         },
@@ -194,7 +274,7 @@ Vue.component("variation-select", {
             {
                 // get variation data from remote
                 ApiService
-                    .get("/rest/io/variations/" + variationId, {template: "Ceres::Item.SingleItem"})
+                    .get("/rest/io/variations/" + variationId, { template: "Ceres::Item.SingleItem" })
                     .done(response =>
                     {
                         // store received variation data for later reuse
@@ -202,10 +282,31 @@ Vue.component("variation-select", {
 
                         this.$store.commit("setVariation", response);
 
-                        document.dispatchEvent(new CustomEvent("onVariationChanged", {detail: {attributes: response.attributes, documents: response.documents}}));
+                        document.dispatchEvent(new CustomEvent("onVariationChanged", { detail: { attributes: response.attributes, documents: response.documents } }));
 
                         this.$emit("is-valid-change", true);
                     });
+            }
+        },
+        setUnits(possibleVariations)
+        {
+            let possibleUnitIds = [];
+
+            if (possibleVariations.length > 0)
+            {
+                possibleUnitIds = uniq(possibleVariations.map(variation =>
+                {
+                    return variation.unitCombinationId;
+                }));
+            }
+
+            if (possibleUnitIds.length > 1)
+            {
+                this.possibleUnitIds = possibleUnitIds;
+            }
+            else
+            {
+                this.selectedUnitId = 0;
             }
         }
     },
@@ -222,6 +323,8 @@ Vue.component("variation-select", {
                     const title = document.getElementsByTagName("title")[0].innerHTML;
 
                     window.history.replaceState({}, title, url);
+                    document.dispatchEvent(new CustomEvent("onHistoryChanged", { detail: { title: title, url:url } }));
+
                 }
             },
             deep: true

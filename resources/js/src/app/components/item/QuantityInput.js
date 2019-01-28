@@ -1,7 +1,7 @@
-import {floatLength, formatFloat, limit}from "../../helper/number";
-import {defaultValue, isDefined, isNullOrUndefined}from "../../helper/utils";
+import { floatLength, formatFloat, limit } from "../../helper/number";
+import { defaultValue, isDefined, isNullOrUndefined } from "../../helper/utils";
 import TranslationService from "../../services/TranslationService";
-import {debounce}from "../../helper/debounce";
+import { debounce } from "../../helper/debounce";
 
 Vue.component("quantity-input", {
 
@@ -177,6 +177,12 @@ Vue.component("quantity-input", {
 
         setValue(value)
         {
+            // consider the configured decimal seperator (if the input is typed in the input field)
+            if (typeof value === "string")
+            {
+                value = value.replace(App.decimalSeparator || ",", ".");
+            }
+
             value = parseFloat(value);
             if (isNaN(value))
             {

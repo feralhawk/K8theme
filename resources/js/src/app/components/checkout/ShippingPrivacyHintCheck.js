@@ -21,7 +21,7 @@ Vue.component("shipping-privacy-hint-check", {
 
         currentPrivacyHints()
         {
-            if (this.currentShippingProfile.shippingPrivacyInformation)
+            if (this.currentShippingProfile && this.currentShippingProfile.shippingPrivacyInformation)
             {
                 return this.currentShippingProfile.shippingPrivacyInformation.filter(entry => !!entry.showDataPrivacyAgreementHint);
             }
@@ -44,7 +44,7 @@ Vue.component("shipping-privacy-hint-check", {
                 parcelServiceInformation += `<strong>${hint.parcelServiceName}, ${hint.parcelServiceAddress}</strong>`;
             }
 
-            return TranslationService.translate("Ceres::Template.checkoutShippingPrivacyHint", {parcelServiceInformation});
+            return TranslationService.translate("Ceres::Template.checkoutShippingPrivacyHint", { parcelServiceInformation });
         },
 
         ...Vuex.mapState({
