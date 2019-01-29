@@ -1,11 +1,17 @@
 @charset "UTF-8";
 /*!
- * Bootstrap v4.0.0-alpha.3 (http://getbootstrap.com)
- * Copyright 2011-2016 The Bootstrap Authors
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v4.2.1 (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -809,7 +815,7 @@ pre code {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -3289,7 +3295,7 @@ fieldset[disabled] a.btn {
 .btn-link:focus, .btn-link:hover {
   color: #4cc700;
   text-decoration: underline;
-  background-color: transparent;
+  background-color: #000000;
 }
 
 .btn-link:disabled:focus, .btn-link:disabled:hover {
@@ -4591,7 +4597,7 @@ input[type="button"].btn-block {
 
 .card-header {
   padding: 0.75rem 1.25rem;
-  background-color: #f5f5f5;
+  background-color: #61fe01;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -4908,7 +4914,7 @@ input[type="button"].btn-block {
   color: #fff;
   cursor: default;
   background-color: #4cc700;
-  border-color: #008ebd;
+  border-color: #4cc700;
 }
 
 .page-item.disabled .page-link, .page-item.disabled .page-link:focus, .page-item.disabled .page-link:hover {
@@ -4924,14 +4930,14 @@ input[type="button"].btn-block {
   float: left;
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
-  color: #008ebd;
+  color: #dddddd;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
 }
 
 .page-link:focus, .page-link:hover {
-  color: #005571;
+  color: #909090;
   background-color: #dcdbd8;
   border-color: #ddd;
 }
@@ -13117,7 +13123,7 @@ a.cookie-bar__link{
 
 .top-bar .controls-list .control-user {
   -ms-flex: 1 0 auto;
-      flex: 1 0 auto;
+  flex: 1 0 auto;
   margin-left: 1rem;
 }
 
@@ -13372,8 +13378,14 @@ a.cookie-bar__link{
 
 .navbar-brand {
   float: none;
-  padding: .5rem 0;
+  padding: .5rem 60px;
   display: inline-block;
+}
+
+@media (min-width: 992px){
+  .navbar-brand {
+    padding: .5rem 0;
+  }
 }
 
 .navbar-brand img {
@@ -13406,7 +13418,7 @@ a.cookie-bar__link{
 .navbar-toggler {
   position: absolute;
   top: 50%;
-  right: 1rem;
+  /* right: 1rem; */
   transform: translate(0, -50%);
 }
 
@@ -13421,7 +13433,7 @@ a.cookie-bar__link{
 
 @media (min-width: 544px) {
   .top-bar .controls-list {
-    width: auto;
+    /* width: auto; */
     float: right;
   }
   .top-bar .controls-list > li {
@@ -19299,8 +19311,9 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
 
 .widget.accordion div.card button, .widget.accordion .cmp-address-list .items > div:first-child button, .cmp-address-list .widget.accordion .items > div:first-child button {
   text-align: left;
-  padding: 1.25rem;
+  /* padding: 1.25rem; */
   border-top-width: 0;
+  width: 100%;
 }
 
 .widget.accordion div.card button h5, .widget.accordion .cmp-address-list .items > div:first-child button h5, .cmp-address-list .widget.accordion .items > div:first-child button h5 {
@@ -19368,11 +19381,16 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
 .widget.accordion.widget-info button:hover,
 .widget.accordion.widget-info button:focus {
   -webkit-text-decoration-color: #17a2b8;
-          text-decoration-color: #17a2b8;
+  text-decoration-color: #61fe01;
+}
+
+.widget.accordion.widget-info button:hover h5,
+.widget.accordion.widget-info button:focus h5 {
+  color: #61fe01;
 }
 
 .widget.accordion.widget-info h5 {
-  color: #17a2b8;
+  color: #000000;
 }
 
 .widget.accordion.widget-warning button:hover,
