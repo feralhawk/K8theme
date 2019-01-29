@@ -37,7 +37,7 @@
                 {% set paymentMethodContent = LayoutContainer.show("Ceres::Homepage.PaymentMethods") %}
                 {% if paymentMethodContent|trim is not empty %}
                     <div class="services-payment mb-1">
-                        <strong class="services-title">{{ trans("Ceres::Template.footerPaymentMethods") }}</strong>
+                        <h2 class="h5 services-title">{{ trans("Ceres::Template.footerPaymentMethods") }}</h2>
                         {{ paymentMethodContent }}
                     </div>
                 {% endif %}
@@ -46,7 +46,7 @@
                 {% set shippingContent = LayoutContainer.show("Ceres::Homepage.Shipping") %}
                 {% if shippingContent|trim is not empty %}
                     <div class="services-shipping mb-1">
-                        <strong class="services-title">{{ trans("Ceres::Template.footerOrderShippedBy") }}</strong>
+                        <h2 class="h5 services-title">{{ trans("Ceres::Template.footerOrderShippedBy") }}</h2>
                         {{ shippingContent }}
                     </div>
                 {% endif %}
@@ -55,7 +55,7 @@
                 {% set certifiedContent = LayoutContainer.show("Ceres::Homepage.Certified") %}
                 {% if certifiedContent|trim is not empty %}
                     <div class="services-certificate mb-1">
-                        <strong class="services-title">{{ trans("Ceres::Template.footerCertifiedBy") }}</strong>
+                        <h2 class="h5 services-title">{{ trans("Ceres::Template.footerCertifiedBy") }}</h2>
                         {{ certifiedContent }}
                     </div>
                 {% endif %}
@@ -66,7 +66,7 @@
             <hr>
             {% for i in 1..numberOfCols %}
                 <div class="col-6 col-sm-4 col-lg-4">
-                    <nav class="footer-column mb-2">
+                    <div class="footer-column mb-2">
                         <h2 class="h5">{{ trans('Ceres::Template.footerColumnTitle' ~ i) }}</h2>
                         <ul class="list-unstyled">
 
@@ -88,7 +88,7 @@
                               <li><a href="https://www.instagram.com/krazy8.headshop" id="socialig" class="icon-sprite" target="_blank">Krazy8 @ Instagram</a></li>
                             {% endif %}
                         </ul>
-                    </nav>
+                    </div>
                 </div>
             {% endfor %}
             <hr class="d-sm-none my-2">
