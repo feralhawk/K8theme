@@ -12,9 +12,9 @@
 
 
 
-{% set headerContainer = LayoutContainer.show("Ceres::Header") | trim %}
+{% set headerContainer = LayoutContainer.show("K8theme::Header") | trim %}
 {% if headerContainer is empty %}
-    {% include "Ceres::PageDesign.Partials.Header.DefaultHeader" %}
+    {% include "K8theme::PageDesign.Partials.Header.DefaultHeader" %}
 {% else %}
 <header id="page-header" class="fixed-top">
     {{ headerContainer | raw }}
