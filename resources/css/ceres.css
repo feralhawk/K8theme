@@ -3276,7 +3276,7 @@ fieldset[disabled] a.btn {
 
 .btn-link {
   font-weight: normal;
-  color: #61fe01;
+  color: #000000;
   border-radius: 0;
 }
 
@@ -14381,7 +14381,7 @@ body.menu-is-visible {
 .footer {
   display: block;
   background-color: #000000;
-  color: #61fe01;
+  color: #909090;
   width:  100%;
   bottom: 0;
   left: 0;
@@ -14469,6 +14469,8 @@ body.menu-is-visible {
 
 .footer .footer-services .services-title {
   width: 100%;
+  color: #61fe01;
+  font-weight: 700;
 }
 
 .footer .footer-services .footer-payment-methods div {
@@ -14535,6 +14537,7 @@ body.menu-is-visible {
 
 .footer .footer-column h2 {
   font-weight: 700;
+  color: #61fe00;
 }
 
 .footer .btn-mail {
@@ -19336,7 +19339,7 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
 .widget.accordion div.card button:focus,
 .widget.accordion .cmp-address-list .items > div:first-child button:focus,
 .cmp-address-list .widget.accordion .items > div:first-child button:focus {
-  color: black;
+  color: #61fe01;
 }
 
 .widget.accordion div.card div .card-body, .widget.accordion .cmp-address-list .items > div:first-child div .card-body, .cmp-address-list .widget.accordion .items > div:first-child div .card-body {
@@ -19350,12 +19353,17 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
 
 .widget.accordion.widget-primary button:hover,
 .widget.accordion.widget-primary button:focus {
-  -webkit-text-decoration-color: #008ebd;
-          text-decoration-color: #008ebd;
+  -webkit-text-decoration-color: #61fe01;
+  text-decoration-color: #61fe01;
 }
 
 .widget.accordion.widget-primary h5 {
-  color: #008ebd;
+  color: #000000;
+}
+
+.widget.accordion.widget-primary button:hover h5,
+.widget.accordion.widget-primary button:focus h5 {
+  color: #000000;
 }
 
 .widget.accordion.widget-secondary button:hover,
@@ -19510,6 +19518,10 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
   padding: 1rem 1.5rem;
 }
 
+.widget-text .widget-inner p {
+  font-size: 15px;
+}
+
 .widget-text .placeholder-text {
   border: 3px dashed #dadae3;
   border-radius: 3px;
@@ -19582,20 +19594,20 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
 }
 
 .widget-title-bar .widget-inner {
-  padding: 1rem 1.5rem;
+  padding: 0.3rem 1.5rem;
   text-align: center;
 }
 
 .widget-title-bar .h1, .widget-title-bar h1 {
   margin: 0.5rem auto;
-  font-size: 2.5rem;
+  font-size: 2rem;
   letter-spacing: 1.25px;
   display: block;
 }
 
 .widget-title-bar.widget-primary {
   color: #fff;
-  background-color: #008ebd;
+  background-color: #4cc700;
 }
 
 .widget-title-bar.widget-primary a {
