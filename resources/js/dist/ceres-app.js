@@ -22437,7 +22437,7 @@ Vue.component("item-search", {
         },
         showItemImages: {
             type: Boolean,
-            default: false
+            default: true
         },
         forwardToSingleItem: {
             type: Boolean,
