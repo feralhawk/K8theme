@@ -146,7 +146,7 @@ Vue.component("item-search", {
 
                 const promiseCount = ++this.promiseCount;
 
-                ApiService.get("/rest/io/item/search/autocomplete", { template: "Ceres::ItemList.Components.ItemSearch", query: searchString })
+                ApiService.get("/rest/io/item/search/autocomplete", { template: "K8theme::ItemList.Components.ItemSearch", query: searchString })
                     .done(response =>
                     {
                         if (this.promiseCount === promiseCount)
