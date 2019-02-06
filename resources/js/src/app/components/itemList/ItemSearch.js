@@ -180,7 +180,7 @@ Vue.component("item-search", {
 
                     for (const split of searchString.split(" "))
                     {
-                        displayName = displayName.replace(split, `<strong>${split}</strong>`);
+                        displayName = displayName.replace(split, `${split}`);
                     }
 
                     this.autocompleteResult.push({
