@@ -178,10 +178,7 @@ Vue.component("item-search", {
 
                     let displayName = name;
 
-                    for (const split of searchString.split(" "))
-                    {
-                        displayName = displayName.replace(split, `${split}`);
-                    }
+                    
 
                     this.autocompleteResult.push({
                         img,
