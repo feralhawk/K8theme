@@ -11,11 +11,11 @@
             </button>
 
             <div class="autocomplete-suggestions" v-if="isSearchFocused && autocompleteResult.length">
-                <div class="autocomplete-suggestion" v-for="(item, index) in autocompleteResult" :key="index" @mousedown="selectAutocompleteItem(item)" :class="{ 'autocomplete-selected': selectedAutocompleteIndex === index }">
-                    <div class="autocomplete-image-container" v-if="showItemImages">
+                <div class="autocomplete-suggestion" v-for="(item, index) in autocompleteResult" :key="index" @mousedown="selectAutocompleteItem(item)" :class="{ 'autocomplete-selected': selectedAutocompleteIndex === index } {'odd': $index % 2 === 0, 'even': $index % 2 !== 0 }">
+                    <div class="autocomplete-image-container col-2" v-if="showItemImages">
                         <img class="autocomplete-image" :src="item.img">
                     </div>
-                    <div class="autocomplete-item-name" v-html="item.displayName"></div>
+                    <div class="autocomplete-item-name col-10" v-html="item.displayName"></div>
                 </div>
             </div>
         </div>
