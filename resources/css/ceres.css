@@ -449,7 +449,7 @@ select,
 summary,
 textarea {
   -ms-touch-action: manipulation;
-      touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 table {
@@ -3031,15 +3031,15 @@ fieldset[disabled] a.btn {
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
   color: #fff;
-  background-color: #008ebd;
-  border-color: #008ebd;
+  background-color: #4cc700;
+  border-color: #909090;
 }
 
 .btn-outline-primary:active, .btn-outline-primary.active,
 .open > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-color: #008ebd;
-  border-color: #008ebd;
+  background-color: #4cc700;
+  border-color: #909090;
 }
 
 .btn-outline-primary:active:hover, .btn-outline-primary:active:focus, .btn-outline-primary:active.focus, .btn-outline-primary.active:hover, .btn-outline-primary.active:focus, .btn-outline-primary.active.focus,
@@ -3047,8 +3047,8 @@ fieldset[disabled] a.btn {
 .open > .btn-outline-primary.dropdown-toggle:focus,
 .open > .btn-outline-primary.dropdown-toggle.focus {
   color: #fff;
-  background-color: #004d66;
-  border-color: #002e3e;
+  background-color: #4cc700;
+  border-color: #909090;
 }
 
 .btn-outline-primary.disabled:focus, .btn-outline-primary.disabled.focus, .btn-outline-primary:disabled:focus, .btn-outline-primary:disabled.focus {
@@ -10801,6 +10801,11 @@ body .wrapper-main {
   height: 100%;
 }
 
+.page-content.basket #ppButton {
+  padding-bottom: 15px;
+  text-align: right;
+}
+
 .container-max {
   max-width: 1200px;
   z-index: auto;
@@ -12447,7 +12452,7 @@ Custom classes
   -ms-user-select: none;
   user-select: none;
   width: 40px;
-  background: transparent;
+  background: #000000;
   outline: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
@@ -12499,7 +12504,7 @@ Custom classes
   bottom: 0;
   right: 0;
   margin: auto;
-  background: #61fe01;
+  background: #000000;
   border: 2px solid #fff;
   transform-origin: 50% 50%;
 }
@@ -13093,7 +13098,7 @@ a.cookie-bar__link{
     white-space: nowrap;
   }
   .top-bar .controls-list > li a:not(.btn)[aria-expanded="true"] {
-    background-color: #008ebd;
+    background-color: #000000;
     color: #fff;
   }
   .top-bar .controls-list > li .anicon {
@@ -13502,7 +13507,7 @@ a.cookie-bar__link{
 }
 
 .cmp-search-box {
-  background-color: #282d2f;
+  background-color: #282d2f99;
   padding: 0px 15px;
   z-index: 1070;
   position: fixed;
@@ -13516,7 +13521,7 @@ a.cookie-bar__link{
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: row nowrap;
-      flex-flow: row nowrap;
+  flex-flow: row nowrap;
   padding: 1rem 0em;
   position: relative;
   max-width: 1200px;
@@ -13525,15 +13530,17 @@ a.cookie-bar__link{
 
 .cmp-search-box .search-box-shadow-frame {
   display: -ms-flexbox;
-  display: flex;
+  display: block;
   -ms-flex: 100;
-      flex: 100;
+  /* flex: 100; */
+  width: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
 }
 
 .cmp-search-box .search-input {
   -ms-flex: 1 0 70%;
-  flex: 1 0 70%;
+  /* flex: 1 0 100%; */
   display: inline-block;
   vertical-align: top;
   font-size: 1.3rem;
@@ -13542,20 +13549,23 @@ a.cookie-bar__link{
   padding: .4rem 1rem;
   outline: none;
   height: 30px;
+  width: 85%;
 }
 
 .cmp-search-box .search-submit {
-  display: inline-block;
+  display: block;
   vertical-align: top;
   font-size: 1.3rem;
   line-height: 1;
   background: #ffffff;
-  padding: .4rem 1rem;
+  /* padding: .4rem 1rem; */
   color: #000000;
   border: none;
   transition: all 300ms;
   outline: none;
   height: 30px;
+  float: right;
+  width: 34px;
 }
 
 .cmp-search-box .search-submit:hover {
@@ -13565,19 +13575,58 @@ a.cookie-bar__link{
 .autocomplete-suggestions {
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
   background: #ffffff;
-  overflow: auto;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 .autocomplete-suggestion {
-  padding: 5px 15px;
-  white-space: nowrap;
+  padding: 5px 0px;
   overflow: hidden;
   cursor: pointer;
+  font-size: 12px;
+}
+
+.autocomplete-suggestions .row:hover {
+  background: #dcdbd8;
+}
+
+.autocomplete-suggestions .odd {
+  background: #ebf7e3;
+}
+
+.autocomplete-suggestions .even {
+  background: #f5f5f5;
 }
 
 .autocomplete-selected {
   background: #dcdbd8;
 }
+
+.autocomplete-item-name {
+  padding-left: 20px;
+}
+
+.autocomplete-image-container, .autocomplete-item-name {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.autocomplete-image-container img {
+  width: auto;
+  max-width: 50px;
+}
+
+@media (min-width:767px) {
+  .autocomplete-image-container img {
+    max-width: 60px;
+  }
+
+  .autocomplete-suggestion {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+}
+
 
 .cmp-country-settings,
 .cmp-currency-select {
@@ -15539,6 +15588,7 @@ body.menu-is-visible {
 .cmp-totals dt, .cmp-totals dd {
   display: inline-block;
   vertical-align: top;
+  text-align: right;
 }
 
 .cmp-totals dt {
@@ -17442,6 +17492,12 @@ article.cmp.cmp-product-thumb.cmp-product-thumb--grid {}
 
 .list-controls .filter-toggle {
   text-decoration: none;
+  color: #61fe01;
+  background-color: transparent;
+}
+
+.list-controls .filter-toggle:hover {
+  color: #4cc700;
 }
 
 .list-controls .filter-toggle i {
