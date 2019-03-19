@@ -6863,7 +6863,7 @@ a.text-muted:focus, a.text-muted:hover {
 }
 
 .text-primary {
-  color: #008ebd !important;
+  color: #4cc700 !important;
 }
 
 a.text-primary:focus, a.text-primary:hover {
@@ -13168,6 +13168,8 @@ a.cookie-bar__link{
   display: block;
   overflow: hidden;
   border: none !important;
+  transform: none !important;
+  top: inherit !important;
 }
 
 @media (max-width: 991px) {
@@ -13184,12 +13186,14 @@ a.cookie-bar__link{
   border: 0;
   border-top: 1px solid #909090;
   display: block;
-  color: #fff;
+  color: #61fe01;
   background-color: #282d2f;
 }
 
 .top-bar .controls-list .control-user #login-change > .dropdown .dropdown-menu a:hover {
   background-color: #4cc700;
+  color: #000000;
+  font-weight: bold;
 }
 
 .top-bar .controls-list .control-user #login-change > .dropdown .dropdown-menu a > .fa-user {
@@ -13198,6 +13202,10 @@ a.cookie-bar__link{
 
 .top-bar .controls-list .control-user #login-change > .dropdown .dropdown-menu a > .fa-sign-out {
   margin-right: 3px;
+}
+
+.top-bar .controls-list .control-user #login-change > .dropdown.show .dropdown-menu {
+  max-height: 200px;
 }
 
 .top-bar .controls-list .control-user .account-menu {
