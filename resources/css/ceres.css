@@ -19107,15 +19107,15 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
 }
 
 .widget-image-carousel.widget-primary .carousel-indicators li {
-  border-color: #008ebd;
+  border-color: #61fe01;
 }
 
 .widget-image-carousel.widget-primary .carousel-indicators li.active {
-  background-color: #008ebd;
+  background-color: #61fe01;
 }
 
 .widget-image-carousel.widget-primary .carousel-control .fa {
-  color: #008ebd;
+  color: #61fe01;
 }
 
 .widget-image-carousel.widget-secondary .widget-caption h2,
@@ -19604,12 +19604,19 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
 }
 
 .widget-text.widget-primary {
-  color: #fff;
-  background-color: #008ebd;
+  color: #202020;
+  background-color: #61fe010f;
 }
 
 .widget-text.widget-primary a {
-  color: #fff;
+  color: #000000;
+  background-color: #61fe01;
+  padding: 1px 3px;
+}
+
+.widget-text.widget-primary a:hover {
+  color: #61fe01;
+  background-color: #000000;
 }
 
 .widget-text.widget-secondary {
