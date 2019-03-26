@@ -38,10 +38,10 @@ class K8themeServiceProvider extends ServiceProvider
             pluginApp(Container::class)->register('K8theme::PageDesign.Partials.Header.NavigationList.twig', NavigationCacheSettings::class);
             pluginApp(Container::class)->register('K8theme::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
 
-            $partial->set('head', 'Ceres::PageDesign.Partials.Head');
-            $partial->set('header', 'Ceres::PageDesign.Partials.Header.Header');
-            $partial->set('page-design', 'Ceres::PageDesign.PageDesign');
-            $partial->set('footer', 'Ceres::PageDesign.Partials.Footer');
+            $partial->set('head', 'K8theme::PageDesign.Partials.Head');
+            $partial->set('header', 'K8theme::PageDesign.Partials.Header.Header');
+            $partial->set('page-design', 'K8theme::PageDesign.PageDesign');
+            $partial->set('footer', 'K8theme::PageDesign.Partials.Footer');
 
             if (in_array("head", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
