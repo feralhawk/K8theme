@@ -34,7 +34,7 @@
     <div class="container-max footer-content">
         <div class="row footer-services">
             <div class="col-12 col-sm-12 col-lg-4">
-                {% set paymentMethodContent = LayoutContainer.show("Ceres::Homepage.PaymentMethods") %}
+                {% set paymentMethodContent = LayoutContainer.show("K8theme::Containers.FooterServices.PaymentMethods") %}
                 {% if paymentMethodContent|trim is not empty %}
                     <div class="services-payment mb-1">
                         <h2 class="h5 services-title">{{ trans("Ceres::Template.footerPaymentMethods") }}</h2>
