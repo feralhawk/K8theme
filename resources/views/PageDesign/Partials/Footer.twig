@@ -34,7 +34,7 @@
     <div class="container-max footer-content">
         <div class="row footer-services">
             <div class="col-12 col-sm-12 col-lg-4">
-                {% set paymentMethodContent = LayoutContainer.show("K8theme::Containers.FooterServices.PaymentMethods") %}
+                {% set paymentMethodContent = LayoutContainer.show("K8theme::FooterServices.PaymentMethods") %}
                 {% if paymentMethodContent|trim is not empty %}
                     <div class="services-payment mb-1">
                         <h2 class="h5 services-title">{{ trans("Ceres::Template.footerPaymentMethods") }}</h2>
@@ -43,7 +43,7 @@
                 {% endif %}
             </div>
             <div class="col-6 col-sm-6 col-lg-4">
-                {% set shippingContent = LayoutContainer.show("Ceres::Homepage.Shipping") %}
+                {% set shippingContent = LayoutContainer.show("K8theme::FooterServices.ShippingMethods") %}
                 {% if shippingContent|trim is not empty %}
                     <div class="services-shipping mb-1">
                         <h2 class="h5 services-title">{{ trans("Ceres::Template.footerOrderShippedBy") }}</h2>
@@ -52,7 +52,7 @@
                 {% endif %}
             </div>
             <div class="col-6 col-sm-6 col-lg-4">
-                {% set certifiedContent = LayoutContainer.show("Ceres::Homepage.Certified") %}
+                {% set certifiedContent = LayoutContainer.show("K8theme::FooterServices.CertifiedBy") %}
                 {% if certifiedContent|trim is not empty %}
                     <div class="services-certificate mb-1">
                         <h2 class="h5 services-title">{{ trans("Ceres::Template.footerCertifiedBy") }}</h2>
