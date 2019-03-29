@@ -1,5 +1,9 @@
 {% extends getPartial('page-design') %}
-
+{% extends "Ceres::Homepage.Homepage" %}
+    {% block PartialHead %}
+      {% set companyName  = "Krazy8 Headshop, Growshop & Graffiti-Künstlerbedarf" %}
+      {{ parent() }}
+    {% endblock %}
 {% block PageBody %}
 
 <div class="container-max page-content">
