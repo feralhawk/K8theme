@@ -7,8 +7,8 @@
 {% set companyName  = trans("Ceres::Template.headerCompanyName") %}
 
 {% block PartialHead %}
-  <meta name="description" content="{{ trans('Ceres::Template.homepageMetaDescription') }}">
-  <meta name="robots" content="{% if forceNoIndex %}NOINDEX{% else %}{{ config("Ceres.meta.robots_home") }}{% endif %}">
+  <meta name="description" content="{{ trans('K8theme::Template.homepageMetaDescription') }}">
+  <meta name="robots" content="{% if forceNoIndex %}NOINDEX{% else %}{{ config("K8theme.meta.robots_home") }}{% endif %}">
   <meta property="og:title" content="{{ companyName }}"/>
   <meta property="og:type" content="article"/>
   <meta property="og:url" content="{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}"/>
@@ -17,7 +17,7 @@
   <script type="application/ld+json">
       {"@context": "http://schema.org","@type": "WebSite","url": "{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}","potentialAction":{"@type": "SearchAction","target": "{{ services.webstoreConfig.getWebstoreConfig().domainSsl ~ urls.search }}?query={search_term}","query-input": "required name=search_term"}}
   </script>
-  
+
   <title>{{ companyName }}</title>
 {% endblock %}
 
