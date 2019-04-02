@@ -421,16 +421,6 @@ a:not([href]):not([tabindex]):focus {
   outline: none;
 }
 
-::-moz-selection {
-  color: #61fe01;
-  background: #000000;
-}
-
-::selection {
-  color: #61fe01;
-  background: #000000;
-}
-
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -4079,7 +4069,7 @@ input[type="button"].btn-block {
 }
 
 .custom-select:focus {
-  border-color: #000000;
+  border-color: #51a7e8;
   outline: none;
 }
 
