@@ -421,6 +421,16 @@ a:not([href]):not([tabindex]):focus {
   outline: none;
 }
 
+::-moz-selection {
+  color: #61fe01;
+  background: #000000;
+}
+
+::selection {
+  color: #61fe01;
+  background: #000000;
+}
+
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -4069,7 +4079,7 @@ input[type="button"].btn-block {
 }
 
 .custom-select:focus {
-  border-color: #51a7e8;
+  border-color: #000000;
   outline: none;
 }
 
@@ -19740,8 +19750,8 @@ html.ie .widget-image-carousel .widget-inner .carousel-item .img-cover {
 }
 
 .widget-title-bar.widget-primary {
-  color: #fff;
-  background-color: #4cc700;
+  color: #61fe01;
+  background-color: #000000;
 }
 
 .widget-title-bar.widget-primary a {
