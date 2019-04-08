@@ -421,6 +421,16 @@ a:not([href]):not([tabindex]):focus {
   outline: none;
 }
 
+::-moz-selection {
+  color: #61fe01;
+  background: #000000;
+}
+
+::selection {
+  color: #61fe01;
+  background: #000000;
+}
+
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -4069,7 +4079,7 @@ input[type="button"].btn-block {
 }
 
 .custom-select:focus {
-  border-color: #51a7e8;
+  border-color: #000000;
   outline: none;
 }
 
@@ -13476,6 +13486,7 @@ a.cookie-bar__link{
   }
   .top-bar .list-inline .list-inline-item #login-change a span {
     display: inline-block;
+    font-weight: bold;
   }
   .header {
     padding-left: 15px;
@@ -18429,6 +18440,10 @@ article.cmp.cmp-product-thumb.cmp-product-thumb--grid {}
 
 .add-to-basket-container .quantity-input-container {
   margin-right: 15px;
+}
+
+.add-to-basket-container .btn {
+  width: 330px;
 }
 
 .add-to-basket-container .fa-shopping-cart {
