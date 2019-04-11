@@ -10806,6 +10806,10 @@ body .wrapper-main {
   background-color: #fff;
 }
 
+.page-content.contact:not(.checkout):not(.basket) > .row .col-12:nth-child(4), .page-content.contact:not(.checkout):not(.basket) > .row .col-12:nth-child(6) {
+  padding-left: 35px;
+}
+
 .page-content:not(.categoriegrid) > .row > .col-xs-12 {
   margin-top: 10px;
   height: 100%;
@@ -10914,8 +10918,8 @@ a:active {
     padding-right: 20px;
   }
   .page-content.basket, .page-content.checkout, .page-content.contact, .page-content.myaccount {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
     box-shadow: 10px 10px 20px #000000;
   }
 }
