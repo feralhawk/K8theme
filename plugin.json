@@ -1,5 +1,5 @@
 {
-    "version"               :"2.0.0",
+    "version"               :"2.0.1",
     "name"                  :"K8theme",
     "description"           :"Basic theme plugin for Ceres",
     "shortDescription"      :{ "de": "Basic Theme Plugin für Ceres.", "en": "Basic theme plugin for Ceres." },
@@ -10,7 +10,7 @@
     "license"               :"AGPL-3.0",
     "type"                  :"theme",
     "require"           :   {
-                                "Ceres":"~3.0"
+                                "Ceres":">= 3.0.0"
                             },
     "serviceProvider"       :"K8theme\\Providers\\K8themeServiceProvider",
     "dataProviders"     :

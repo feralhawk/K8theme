@@ -1,10 +1,6 @@
 <?php
 
 namespace K8theme\Providers;
-
-use Ceres\Caching\NavigationCacheSettings;
-use Ceres\Caching\SideNavigationCacheSettings;
-use IO\Services\ContentCaching\Services\Container;
 use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Templates\Twig;
@@ -29,15 +25,11 @@ class K8themeServiceProvider extends ServiceProvider
 
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
-
         $enabledOverrides = explode(", ", $config->get("K8theme.templates.override"));
 
         // Override partials
         $dispatcher->listen('IO.init.templates', function (Partial $partial) use ($enabledOverrides)
         {
-            pluginApp(Container::class)->register('K8theme::PageDesign.Partials.Header.NavigationList.twig', NavigationCacheSettings::class);
-            pluginApp(Container::class)->register('K8theme::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
-
             $partial->set('head', 'K8theme::PageDesign.Partials.Head');
             $partial->set('header', 'K8theme::PageDesign.Partials.Header.Header');
             $partial->set('page-design', 'K8theme::PageDesign.PageDesign');
