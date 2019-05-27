@@ -14,6 +14,7 @@ use K8theme\Contexts\K8themeSingleItemContext;
 
 
 
+
 class K8themeServiceProvider extends ServiceProvider
 {
     const PRIORITY = 0;
@@ -108,7 +109,7 @@ class K8themeServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.checkout', function (TemplateContainer $container)
             {
-                $container->setTemplate('K8theme::Checkout.Checkout');
+                $container->setTemplate('K8theme::Checkout.CheckoutView');
                 return false;
             }, self::PRIORITY);
         }
@@ -174,7 +175,7 @@ class K8themeServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.my-account', function (TemplateContainer $container)
             {
-                $container->setTemplate('K8theme::MyAccount.MyAccount');
+                $container->setTemplate('K8theme::MyAccount.MyAccountView');
                 return false;
             }, self::PRIORITY);
         }
@@ -311,56 +312,51 @@ class K8themeServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
-        $enabledResultFields = explode(", ", $config->get("K8theme.result_fields.override"));
+        $enabledResultFields = [];
 
-        // Override auto complete list item result fields
-        if (in_array("auto_complete_list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+        if(!empty($config->get("K8theme.result_fields.override")))
         {
-
-          $dispatcher->listen( 'IO.ResultFields.AutoCompleteListItem', function(ResultFieldTemplate $templateContainer)
-          {
-              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST, 'K8theme::ResultFields.AutoCompleteListItem');
-          });
+            $enabledResultFields = explode(", ", $config->get("K8theme.result_fields.override"));
         }
 
-        // Override basket item result fields
-        if (in_array("basket_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+        if(!empty($enabledResultFields))
         {
+            $dispatcher->listen( 'IO.ResultFields.*', function(ResultFieldTemplate $templateContainer) use ($enabledResultFields)
+            {
+                $templatesToOverride = [];
 
-          $dispatcher->listen( 'IO.ResultFields.BasketItem', function(ResultFieldTemplate $templateContainer)
-          {
-              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_BASKET_ITEM, 'K8theme::ResultFields.BasketItem');
-          });
-        }
+                // Override list item result fields
+                if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+                {
+                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_LIST_ITEM] = 'K8theme::ResultFields.ListItem';
+                }
 
-        // Override category tree result fields
-        if (in_array("category_tree", $enabledResultFields) || in_array("all", $enabledResultFields))
-        {
+                // Override single item view result fields
+                if (in_array("single_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+                {
+                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_SINGLE_ITEM] = 'K8theme::ResultFields.SingleItem';
+                }
 
-          $dispatcher->listen( 'IO.ResultFields.CategoryTree', function(ResultFieldTemplate $templateContainer)
-          {
-              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_CATEGORY_TREE, 'K8theme::ResultFields.CategoryTree');
-          });
-        }
+                // Override basket item result fields
+                if (in_array("basket_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+                {
+                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_BASKET_ITEM] = 'K8theme::ResultFields.BasketItem';
+                }
 
-        // Override list item result fields
-        if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
-        {
+                // Override auto complete list item result fields
+                if (in_array("auto_complete_list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+                {
+                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST] = 'K8theme::ResultFields.AutoCompleteListItem';
+                }
 
-          $dispatcher->listen( 'IO.ResultFields.ListItem', function(ResultFieldTemplate $templateContainer)
-          {
-              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_LIST_ITEM, 'K8theme::ResultFields.ListItem');
-          });
-        }
+                // Override category tree result fields
+                if (in_array("category_tree", $enabledResultFields) || in_array("all", $enabledResultFields))
+                {
+                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_CATEGORY_TREE] = 'K8theme::ResultFields.CategoryTree';
+                }
 
-        // Override single item view result fields
-        if (in_array("single_item", $enabledResultFields) || in_array("all", $enabledResultFields))
-        {
-
-          $dispatcher->listen( 'IO.ResultFields.SingleItem', function(ResultFieldTemplate $templateContainer)
-          {
-              $templateContainer->setTemplate(ResultFieldTemplate::TEMPLATE_SINGLE_ITEM, 'K8theme::ResultFields.SingleItem');
-          });
+                $templateContainer->setTemplates($templatesToOverride);
+            }, self::PRIORITY);
         }
 
         // K8theme Contexts
