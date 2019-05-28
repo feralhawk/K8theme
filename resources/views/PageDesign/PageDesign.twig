@@ -23,6 +23,7 @@
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
 
+{% spaceless %}
 <!DOCTYPE html>
 
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#">
@@ -38,7 +39,10 @@
     {% endfor %}
 </head>
 
-<body>
+<body class="{{ bodyClasses | join(' ') }}">
+
+{{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningBodyTag") }}
+
 <script>
     if('ontouchstart' in document.documentElement)
     {
@@ -112,18 +116,22 @@
                             </div>
 
                             <popper v-cloak class="ml-auto">
-                                <button slot="handle" class="btn btn-icon btn-secondary btn-sm">
-                                    <i class="fa fa-info"></i>
-                                </button>
-                                <div slot="title">
+                                <template #handle>
+                                    <button class="btn btn-icon btn-secondary btn-sm">
+                                        <i class="fa fa-info"></i>
+                                    </button>
+                                </template>
+                                <template #title>
                                     {{ trans("Ceres::Template.regContactInformations") }}
-                                </div>
-                                <ul slot="content" class='pl-3'>
-                                    <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText1') }}</li>
-                                    <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText2') }}</li>
-                                    <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText3') }}</li>
-                                    <li>{{ trans('Ceres::Template.regContactInfoText4') }}</li>
-                                </ul>
+                                </template>
+                                <template #content>
+                                    <ul class='pl-3'>
+                                        <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText1') }}</li>
+                                        <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText2') }}</li>
+                                        <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText3') }}</li>
+                                        <li>{{ trans('Ceres::Template.regContactInfoText4') }}</li>
+                                    </ul>
+                                </template>
                             </popper>
 
                             <button type="button" class="close ml-0" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -144,6 +152,7 @@
         <!-- ./PASSWORD RESET MODAL -->
 
         <!-- SHIPPINGCOSTS MODAL -->
+        {% if ceresConfig.global.shippingCostsCategoryId > 0 %}
         <div id="shippingscosts-modal-wrapper">
             <div class="modal fade" id="shippingscosts" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
@@ -153,12 +162,18 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            {% include category_template(ceresConfig.global.shippingCostsCategoryId, lang, webstoreConfig.webstoreId) ignore missing %}
+                            {% set shopBuilderShippingTemplate = shop_builder_category_template(ceresConfig.global.shippingCostsCategoryId) %}
+                            {% if shopBuilderShippingTemplate | trim is not empty %}
+                                {{ shopBuilderShippingTemplate | raw }}
+                            {% else %}
+                                {% include category_template(ceresConfig.global.shippingCostsCategoryId, lang, webstoreConfig.webstoreId) ignore missing %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        {% endif %}
         <!-- ./SHIPPINGCOSTS MODAL -->
     </div>
 </div>
