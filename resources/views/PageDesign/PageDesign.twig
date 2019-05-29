@@ -181,23 +181,25 @@
 <script>
     App = {
         config: {{ ceresConfig | json_encode | raw }},
+        urls: {{ urls | json_encode | raw }},
         activeCurrency: "{{ currencyData[currencyFormat] }}",
         currencyPattern: {{  services.checkout.getCurrencyPattern() | json_encode | raw }},
         isCategoryView: {% if services.template.isCategory() == "1" %}true{% else %}false{% endif %},
         isCheckoutView : {% if services.template.isCheckout() == "1" %}true{% else %}false{% endif %},
         isSearch: {% if services.template.isSearch() == "1" %}true{% else %}false{% endif %},
-        templateEvent: "{{templateEvent}}",
+        templateEvent: "{{ templateEvent }}",
         language: "{{ lang }}",
         defaultLanguage: "{{ defaultLanguage }}",
         decimalSeparator: "{{ config("IO.format.separator_decimal") }}",
-        urlTrailingSlash: {{ urls.appendTrailingSlash | json_encode }}
+        urlTrailingSlash: {{ urls.appendTrailingSlash | json_encode }},
+        isShopBuilder: {{ isShopBuilder | default(false) | json_encode }}
     };
 </script>
 
 
 {{ Loader.include_components() }}
 
-{{ LayoutContainer.show("K8theme::Script.Loader") }}
+{{ LayoutContainer.show("Ceres::Script.Loader") }}
 
 {{ Translations.add( "Ceres", "Template" ) }}
 {% if ceresConfig.log.performanceLevel  == 'development' %}
@@ -214,6 +216,7 @@
 {{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 
 {{ get_filtered_tags() }}
+{{ get_json_data() }}
 
 <script>
     vueEventHub = new Vue();
@@ -242,74 +245,91 @@
 
     (function($) {
 
-        var header = document.getElementById('page-header');
-        var unfixedElements = [];
+        var vueApp = document.getElementById('vue-app');
+        var headerParent = document.getElementById('page-header-parent');
+        var headerLoaded = false;
+        var allElementHeights = [];
 
-        if ( !!header )
+        if ( !!headerParent )
         {
+            var headerChildren = headerParent.children;
+
             function calculateBodyOffset()
             {
-                if ( header.classList.contains('fixed-top'))
+                if (headerLoaded && headerParent)
                 {
                     var bodyOffset = 0;
                     // Get current header with children
-                    var children = document.getElementById('page-header').children;
-                    for( var i = 0; i < children.length; i++ )
-                    {
-                        bodyOffset += children[i].getBoundingClientRect().height;
+                    if(headerParent === null){
+                        return;
                     }
 
-                    document.getElementById('vue-app').style.marginTop = bodyOffset + 'px';
-                    document.getElementById('vue-app').style.minHeight = "calc(100vh - " + bodyOffset + "px)";
+                    for( var i = 0; i < headerChildren.length; i++ )
+                    {
+                        bodyOffset += headerChildren[i].getBoundingClientRect().height;
+                    }
+
+                    vueApp.style.marginTop = bodyOffset + 'px';
+                    vueApp.style.minHeight = "calc(100vh - " + bodyOffset + "px)";
                 }
             }
 
-            function getUnfixedElements()
+            function getHeaderElementsHeights()
             {
-                unfixedElements = [];
-                $('#page-header .unfixed').each(function(i, elem)
+                for (var i = 0; i < headerChildren.length; i++)
                 {
-                    var rect = elem.getBoundingClientRect();
-                    unfixedElements.push({
-                        element: elem,
-                        top: rect.top,
-                        height: rect.height
-                    });
-                });
-                scrollUnfixedElements();
+                    allElementHeights.push(headerChildren[i].getBoundingClientRect().height);
+                }
             }
 
-            function scrollUnfixedElements()
+            function scrollHeaderElements()
             {
-                var scrollTop = window.scrollY;
-                unfixedElements.forEach(function(unfixed)
+                if (headerLoaded && !App.isShopBuilder)
                 {
-                    var spacingTop = unfixed.height - scrollTop;
-                    if ( !!unfixed.element.previousElementSibling )
+                    var absolutePos = 0;
+                    var fixedElementsHeight = 0;
+                    var offset = 0;
+                    var scrollTop = window.pageYOffset;
+                    var zIndex = 100;
+
+                    for (var i = 0; i < headerChildren.length; i++)
                     {
-                        unfixed.element.previousElementSibling.style.marginBottom = (spacingTop >= 0 ? spacingTop : 0) + 'px'
+                        var elem = headerChildren[i];
+                        var elemHeight = allElementHeights[i];
+
+                        offset = absolutePos - scrollTop;
+                        elem.style.position = "absolute";
+                        elem.style.zIndex = zIndex;
+                        zIndex--;
+
+                        if (!elem.classList.contains("unfixed"))
+                        {
+                            if (offset < 0)
+                            {
+                                elem.style.top = 0;
+                            }
+                            else
+                            {
+                                elem.style.top = offset + 'px';
+                            }
+
+                            if (fixedElementsHeight > 0 && offset < fixedElementsHeight)
+                            {
+                                elem.style.top = fixedElementsHeight + 'px';
+                            }
+
+                            fixedElementsHeight = fixedElementsHeight + elemHeight;
+                        }
+                        else
+                        {
+                            elem.style.top = offset + 'px';
+                        }
+                        absolutePos = absolutePos + elemHeight;
                     }
-                    else
-                    {
-                        unfixed.element.parentElement.style.paddingTop = (spacingTop >= 0 ? spacingTop : 0) + 'px';
-                    }
-                    unfixed.element.style.position = 'absolute';
-                    unfixed.element.style.top = unfixed.top - scrollTop + 'px';
-                });
+                }
             }
 
-            getUnfixedElements();
-
-            $(window).scroll(scrollUnfixedElements);
-
-            $(document).on('shopbuilder.after.ready', function()
-            {
-                unfixedElements.forEach(function(unfixed)
-                {
-                    $(unfixed.element).attr('css', '');
-                });
-                scrollUnfixedElements = function() {};
-            });
+            $(window).scroll(scrollHeaderElements);
 
             $(document).on('shopbuilder.before.viewUpdate shopbuilder.after.viewUpdate', function()
             {
@@ -317,25 +337,34 @@
                 $('.owl-carousel').trigger('refresh.owl.carousel');
             });
 
-            var headerImages = header.querySelectorAll("img");
+            var headerImages = headerParent.querySelectorAll("img");
 
-            if(headerImages.length)
-            {
-                for (var img in headerImages)
+            Promise.all(
+                Array.prototype.slice.call(headerImages).map(function(headerImage)
                 {
-                    headerImages[img].onload = function()
+                    return new Promise(function(resolve)
                     {
-                        calculateBodyOffset();
-                    }
-                }
-            }
+                        headerImage.onload = function()
+                        {
+                            resolve();
+                        }
+                    });
+                })
+            ).then(function()
+            {
+                // Initialize
+                headerLoaded = true;
+                getHeaderElementsHeights();
+                scrollHeaderElements();
+                calculateBodyOffset();
+            });
 
             calculateBodyOffset();
         }
 
         $(document).on('shopbuilder.after.drop shopbuilder.after.widget_replace', function(event, eventData, widgetElement)
         {
-            var compiled = Vue.compile(widgetElement[0].outerHTML );
+            var compiled = Vue.compile(widgetElement[0].outerHTML, { delimiters: ["${", "}"] } );
             var component = new Vue({
                 store: window.ceresStore,
                 render: compiled.render,
@@ -361,3 +390,4 @@
 {{ get_shop_builder_scripts( "latest", ceresConfig.log.performanceLevel == 'live') }}
 </body>
 </html>
+{% endspaceless %}
