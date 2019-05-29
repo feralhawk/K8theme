@@ -12,14 +12,29 @@
 
 
 
+
+
+
 {% set headerContainer = LayoutContainer.show("K8theme::Header") | trim %}
 {% if headerContainer is empty %}
     {% include "K8theme::PageDesign.Partials.Header.DefaultHeader" %}
 {% else %}
 <header id="page-header" class="fixed-top">
-    {{ headerContainer | raw }}
+    <div class="container-max">
+        <div class="row">
+            <div id="page-header-parent" class="col-12">
+                {{ headerContainer | raw }}
+            </div>
+        </div>
+    </div>
 </header>
 {% endif %}
+
+
+
+
+
+
 
 {% set scriptId = uid() %}
 <script id="{{ scriptId }}">
