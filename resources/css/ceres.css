@@ -5,6 +5,36 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+:root {
+  --blue: #008ebd;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #d4021d;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #008ebd;
+  --secondary: #d4021d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: Custom-Font, Helvetica, Arial, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 
 *,
 *::before,
@@ -14,8 +44,9 @@
 
 html {
   font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
+  line-height: 1.15;
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -13506,7 +13537,7 @@ a.cookie-bar__link{
 
 @media (min-width: 992px) {
   .brand-wrapper {
-    position: absolute;
+    position: absolute !important;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1000;
@@ -13897,11 +13928,10 @@ body.menu-is-visible {
 #mainNavbarCollapsable ul.mainmenu li {
   width: 100%;
   cursor: pointer;
-  float: left;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   /*&.ddown>a:after {
 				border 			: none;
 				content			: "\f0da";
